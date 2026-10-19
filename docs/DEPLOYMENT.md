@@ -22,7 +22,9 @@
 
 Point `www.m2mmedical.com` to Vercel and enable HTTPS.
 
-Update `public/sitemap.xml` and canonical base in `src/lib/constants.ts` if the production domain differs.
+Update `public/sitemap.xml`, canonical base in admin **Settings** (website URL), and the static `og:image` URLs in `index.html` if the production domain differs.
+
+Default social preview image: `public/og-image.jpg` (Open Graph / Twitter / link shares).
 
 ## Post-deploy catalog updates
 
