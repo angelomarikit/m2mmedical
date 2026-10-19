@@ -14,13 +14,11 @@ export function Footer() {
       <Container className="py-14 lg:py-16">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
-            <div className="inline-block rounded-lg bg-white px-5 py-4">
-              <img
-                src={logoUrl}
-                alt={company.name}
-                className="h-20 w-auto max-w-[280px] object-contain sm:h-24 sm:max-w-[320px]"
-              />
-            </div>
+            <img
+              src={logoUrl}
+              alt={company.name}
+              className="h-20 w-auto max-w-[280px] object-contain sm:h-24 sm:max-w-[320px]"
+            />
             <p className="mt-4 text-sm leading-relaxed text-white/75">
               {company.name} provides quality medical equipment, accessories, reusable healthcare
               products, and disposable supplies for hospitals and clinics.
