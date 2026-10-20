@@ -1,0 +1,21 @@
+# M2M Medical — Vite SPA on Apache (cPanel / shared hosting)
+# Served from document root (e.g. public_html). Do not place this file outside the built site.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Existing files and directories (JS/CSS in /assets/, images, etc.)
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Client-side routes: /admin/*, /products/*, /collections/*, ...
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Optional hardening (if mod_headers is enabled)
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
