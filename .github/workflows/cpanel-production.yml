@@ -1,0 +1,65 @@
+# Build production static site for cPanel (no Node required on shared hosting).
+# Add GitHub repo secrets: VITE_SUPABASE_URL, VITE_SUPABASE_PUBLISHABLE_KEY
+# Do NOT add SUPABASE_SERVICE_ROLE_KEY.
+
+name: cPanel production build
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+      - 'cpanel-release/**'
+  workflow_dispatch:
+
+concurrency:
+  group: cpanel-production
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Production build
+        run: npm run build
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }}
+
+      - name: Verify dist output
+        run: node scripts/verify-dist.mjs
+
+      - name: Prepare cpanel-release manifest
+        run: |
+          DEPLOYPATH=$(tr -d '\r\n\t ' < deploy/DEPLOYPATH)
+          sed "s|__DEPLOYPATH__|${DEPLOYPATH}|g" deploy/cpanel-static-deploy.yml > dist/.cpanel.yml
+
+      - name: Publish cpanel-release branch (static files only)
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: cpanel-release
+          single-commit: true
+          commit-message: 'deploy: production build from main'
+
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: m2m-dist
+          path: dist/
+          retention-days: 14

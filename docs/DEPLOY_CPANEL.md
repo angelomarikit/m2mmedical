@@ -1,170 +1,125 @@
-# Deploy M2M Medical to cPanel (Git Version Control)
+# M2M Medical — cPanel deployment (m2mmedical.com)
 
-## What this project is
+## Project type
 
-| Item | Detail |
-|------|--------|
-| **Framework** | **Vite 6** + **React 19** + TypeScript |
-| **Routing** | **React Router** (`BrowserRouter`) — client-side SPA |
-| **Backend** | **Supabase** (Postgres, Auth, Storage, Edge Functions) — hosted on Supabase, not on cPanel |
-| **NOT** | Next.js, Remix, or any Node SSR/API server in this repo |
-
-### Do you need Node.js on the hosting account?
-
-| Phase | Node required? |
-|-------|----------------|
-| **Visitors browsing the site** | **No** — Apache/nginx serves static HTML/JS/CSS from `dist/` |
-| **cPanel Git deploy (this `.cpanel.yml`)** | **Yes** — `npm run build` runs on the server in the **Git repo folder** |
-| **Supabase Edge Functions** (`admin-users`, `register-staff`, inquiries) | **No on cPanel** — deploy with Supabase CLI to your Supabase project |
-
-There are **no API routes** in this repository. Forms and admin call Supabase from the browser using the **publishable (anon) key** only.
+| | |
+|---|---|
+| **Stack** | React 19 + Vite 6 + TypeScript + React Router (SPA) |
+| **Backend** | Supabase (cloud) — not hosted on cPanel |
+| **Live runtime on cPanel** | **Static files only** (HTML/JS/CSS) |
+| **Node on server** | Optional — only if cPanel builds on deploy; **recommended: use `cpanel-release` branch** |
 
 ---
 
-## Verify document root (do this first)
+## Why the site may not work today
 
-1. cPanel → **Domains** (or **Domain Setup**).
-2. Find **m2mmedical.com** (or your primary domain).
-3. Note **Document Root** — commonly:
-   - `/home/mmmedica/public_html`
-   - or `/home/mmmedica/domains/m2mmedical.com/public_html`
+Common causes on this account:
 
-4. Open `.cpanel.yml` and set `CPANEL_DOCROOT` to that **exact** path.
+1. **Wrong folder** — Source or old zips under `public_html/m2mmedical-main` or `public_html/m2mmedical.com` while the **domain document root** points elsewhere.
+2. **Source deployed** instead of **`dist/`** (Vite build output).
+3. **Missing `.htaccess`** — refresh on `/admin` or `/products/...` returns 404.
+4. **Supabase keys** not baked into the build (`VITE_*` missing at build time).
 
-**Do not deploy until this path is correct.** Wrong path = files in the wrong folder or deploy failure.
+**Do not deploy into `m2mmedical-main`** unless that path is confirmed as the document root for https://m2mmedical.com.
 
 ---
 
-## What goes where
+## Step 1 — Confirm document root (required)
+
+In cPanel → **Domains** → **m2mmedical.com** → note **Document Root**.
+
+Examples (only one is correct for your account):
+
+- `/home/mmmedica/public_html`
+- `/home/mmmedica/public_html/m2mmedical.com`
+- `/home/mmmedica/domains/m2mmedical.com/public_html`
+
+Edit **`deploy/DEPLOYPATH`** in Git (single line, trailing slash OK) to that path, commit, push.
+
+We **cannot** verify this from the repository alone.
+
+---
+
+## Step 2 — Choose deployment mode
+
+### Recommended: branch `cpanel-release` (no Node on cPanel)
+
+1. GitHub → repo **Settings → Secrets and variables → Actions**:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_PUBLISHABLE_KEY`  
+   (publishable/anon key only — **never** service role)
+
+2. Push to **`main`** → workflow **cPanel production build** runs → updates branch **`cpanel-release`** with compiled files + `.htaccess` + `.cpanel.yml`.
+
+3. cPanel → **Git Version Control** → clone/pull **`cpanel-release`** (not `main`) for the site repo, or change tracked branch to `cpanel-release`.
+
+4. **Deploy HEAD Commit** — copies built files to `DEPLOYPATH`.
+
+### Alternative: branch `main` (build on server)
+
+If cPanel has Node 18+ in PATH when Git deploy runs:
+
+- Track branch **`main`**
+- `.env.production` in **`/home/mmmedica/repositories/m2mmedical`** (never in `public_html`)
+- Deploy runs `npm run build` then `cp dist/. → DEPLOYPATH`
+
+If Node is **not** available, deploy will fail with a clear message — use **`cpanel-release`**.
+
+---
+
+## Directory layout
 
 ```
 /home/mmmedica/
-├── repositories/m2m-medical/   ← Git clone (source, node_modules, .env.production) — PRIVATE
-│   ├── .cpanel.yml
-│   ├── .env.production         ← build-time only, NEVER in public_html
-│   ├── npm run build → dist/
-│   └── ...
-└── public_html/                ← DOCUMENT ROOT — only built static files
-    ├── index.html
-    ├── assets/
-    ├── .htaccess
-    └── ...
+├── repositories/m2mmedical/     ← Git clone (source OR cpanel-release checkout)
+├── public_html/                 ← often primary document root (confirm!)
+├── public_html/m2mmedical.com/  ← addon domain root (maybe)
+└── public_html/m2mmedical-main/ ← old source dump — NOT a production target unless confirmed
 ```
 
-**Never** copy to `public_html`:
-
-- `node_modules/`, `src/`, `supabase/`, `scripts/`
-- `.env`, `.env.production`, `.env.local`
-- `SUPABASE_SERVICE_ROLE_KEY` (anywhere in the public site)
+**Deploy target** = document root from Step 1 only.
 
 ---
 
-## Environment variables (Supabase)
+## Apache / React Router
 
-Vite **embeds** `VITE_*` variables **at build time** into the JS bundle.
+`public/.htaccess` is copied to `dist/.htaccess` on build. It rewrites non-file requests to `index.html` so `/admin`, `/products`, etc. work on refresh.
 
-On the **server**, in the **Git repository directory** (not `public_html`):
+---
+
+## Supabase production
+
+- Keys are embedded at **`npm run build`** via `VITE_*`.
+- Configure Supabase **Authentication → URL configuration**:
+  - Site URL: `https://m2mmedical.com`
+  - Redirect URLs: `https://m2mmedical.com/**`, `https://www.m2mmedical.com/**`
+- Edge Functions stay on Supabase (`docs/SUPABASE_SETUP.md`).
+
+---
+
+## Local verification
 
 ```bash
 cp .env.production.example .env.production
-# Edit .env.production:
-#   VITE_SUPABASE_URL=https://xxxx.supabase.co
-#   VITE_SUPABASE_PUBLISHABLE_KEY=eyJ... or sb_publishable_...
-```
-
-Then run deploy (or push to trigger `.cpanel.yml`).
-
-**Safe for production static site:**
-
-- `VITE_SUPABASE_URL`
-- `VITE_SUPABASE_PUBLISHABLE_KEY` (anon / publishable — designed for browsers)
-
-**Never use in Vite / never in public_html:**
-
-- `SUPABASE_SERVICE_ROLE_KEY`
-
-After deploy, configure in **Supabase Dashboard**:
-
-- **Authentication → URL configuration**: Site URL `https://www.m2mmedical.com` (or your domain)
-- **Redirect URLs**: `https://www.m2mmedical.com/admin/**`, `https://m2mmedical.com/admin/**`
-- **Edge Functions** remain deployed to Supabase (`npx supabase functions deploy ...`)
-
----
-
-## SPA routing (Apache)
-
-`public/.htaccess` is copied into `dist/` on build. It rewrites unknown paths to `index.html` so `/admin`, `/products/...`, etc. work on shared hosting.
-
-Requires **mod_rewrite** (standard on cPanel Apache).
-
----
-
-## cPanel Git Version Control setup
-
-1. Push this repo to GitHub/GitLab (or use cPanel’s remote).
-2. cPanel → **Git Version Control** → **Create** → clone into e.g. `/home/mmmedica/repositories/m2m-medical`.
-3. Ensure `.cpanel.yml` is on the branch you deploy (usually `main`).
-4. Create `.env.production` on the server in that clone (SSH or File Manager — **outside** `public_html`).
-5. **Backup** existing `public_html` if the live site is not empty.
-6. **Deploy** (Pull or Deploy HEAD). cPanel runs `.cpanel.yml` tasks.
-
-First deploy uses **non-destructive** copy (`rsync -a` without `--delete`). After you confirm the site looks correct, you may add `rsync -a --delete` in `.cpanel.yml` to remove stale files from old sites — **only with your approval**.
-
----
-
-## Commands reference
-
-**Local (development):**
-
-```bash
-npm install
-npm run dev
-```
-
-**Production build (same as cPanel):**
-
-```bash
-cp .env.production.example .env.production
-# fill in VITE_* values
+# fill VITE_* 
 npm ci
-npm run build
-# Output: dist/
-```
-
-**Manual publish (SSH) — if not using Git deploy:**
-
-```bash
-npm run build
-rsync -a dist/ /home/mmmedica/public_html/
+npm run build:verify
 ```
 
 ---
 
-## Node.js on shared cPanel
+## cPanel clicks
 
-If deploy fails with `node not in PATH`:
-
-1. cPanel → **Setup Node.js App** → create app pointing at the **repository** folder (not public_html), Node **18+**.
-2. Or enable **Terminal** and ensure `node`/`npm` from Node selector are in PATH for deployment tasks.
-
-If your host **disallows** Node in Git deployment tasks, use **Option B**:
-
-- Build on your PC or GitHub Actions.
-- Deploy **only** the contents of `dist/` to `public_html` (FTP/rsync), not the full repo.
+1. **Git Version Control** → repository `m2mmedical` → **Update from Remote**
+2. Branch: **`cpanel-release`** (recommended) or **`main`**
+3. **Deploy HEAD Commit**
+4. Open https://m2mmedical.com/ and https://m2mmedical.com/admin/login
 
 ---
 
-## Checklist after deploy
+## Safety
 
-- [ ] Homepage loads, assets return 200 (no 404 on `/assets/*.js`)
-- [ ] Direct URL works: `/products`, `/admin/login` (refresh page — tests `.htaccess`)
-- [ ] Supabase: products load, admin login works
-- [ ] No `.env` files under `public_html` (File Manager search)
-- [ ] HTTPS enforced (cPanel **Force HTTPS Redirect**)
+- Deploy copies **only** built files (`dist/` or `cpanel-release` root) — not `src/`, `node_modules`, or `.env`.
+- `cp` does not delete unrelated files already in `public_html`; clean old mistakes manually after backup if needed.
 
----
-
-## Related docs
-
-- [SUPABASE_SETUP.md](./SUPABASE_SETUP.md) — database, storage, Edge Functions
-- [DEPLOYMENT.md](./DEPLOYMENT.md) — Vercel-oriented notes (optional prerender)
+Repository: https://github.com/angelomarikit/m2mmedical.git

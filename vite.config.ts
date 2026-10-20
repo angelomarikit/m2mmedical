@@ -4,6 +4,8 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
+  // Domain root: https://m2mmedical.com/ (not a subdirectory)
+  base: '/',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
