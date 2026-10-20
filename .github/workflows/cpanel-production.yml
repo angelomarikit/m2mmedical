@@ -1,6 +1,5 @@
-# Build production static site for cPanel (no Node required on shared hosting).
-# Add GitHub repo secrets: VITE_SUPABASE_URL, VITE_SUPABASE_PUBLISHABLE_KEY
-# Do NOT add SUPABASE_SERVICE_ROLE_KEY.
+# Builds dist/ and updates branch cpanel-release for cPanel Git deploy (no Node on shared hosting).
+# Secrets: VITE_SUPABASE_URL, VITE_SUPABASE_PUBLISHABLE_KEY (never service role)
 
 name: cPanel production build
 
@@ -10,7 +9,6 @@ on:
     paths-ignore:
       - 'docs/**'
       - '**.md'
-      - 'cpanel-release/**'
   workflow_dispatch:
 
 concurrency:
@@ -25,6 +23,12 @@ jobs:
     steps:
       - name: Checkout main
         uses: actions/checkout@v4
+
+      - name: Confirm deploy path
+        run: |
+          DEPLOYPATH=$(tr -d '\r\n\t ' < deploy/DEPLOYPATH)
+          echo "DEPLOYPATH=$DEPLOYPATH"
+          test "$DEPLOYPATH" = "/home/mmmedica/public_html/" || (echo "Unexpected DEPLOYPATH — update workflow if document root changed" && exit 1)
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -44,18 +48,20 @@ jobs:
       - name: Verify dist output
         run: node scripts/verify-dist.mjs
 
-      - name: Prepare cpanel-release manifest
+      - name: Prepare cpanel-release bundle
         run: |
           DEPLOYPATH=$(tr -d '\r\n\t ' < deploy/DEPLOYPATH)
           sed "s|__DEPLOYPATH__|${DEPLOYPATH}|g" deploy/cpanel-static-deploy.yml > dist/.cpanel.yml
+          cp scripts/cpanel-publish.sh dist/cpanel-publish.sh
+          chmod +x dist/cpanel-publish.sh
 
-      - name: Publish cpanel-release branch (static files only)
+      - name: Publish cpanel-release branch
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
           branch: cpanel-release
           single-commit: true
-          commit-message: 'deploy: production build from main'
+          commit-message: 'deploy: static build for public_html'
 
       - name: Upload dist artifact
         uses: actions/upload-artifact@v4

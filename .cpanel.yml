@@ -1,19 +1,15 @@
 ---
-# cPanel Git deploy (repository checkout: /home/mmmedica/repositories/m2mmedical)
-#
-# CONFIRM document root in cPanel → Domains → m2mmedical.com → Document Root,
-# then set deploy/DEPLOYPATH on branch main (not public_html/m2mmedical-main source dump).
-#
-# Publishes ONLY dist/ — never source, node_modules, or .env files.
+# Git repo: /home/mmmedica/repositories/m2mmedical
+# Document root (confirmed): /home/mmmedica/public_html/
+# Copies ONLY dist/ build output — never src/, node_modules, or .env
 
 deployment:
   tasks:
     - export DEPLOYPATH=$(/bin/cat deploy/DEPLOYPATH 2>/dev/null | /usr/bin/tr -d '\r\n\t ')
     - /bin/test -n "$DEPLOYPATH" || export DEPLOYPATH=/home/mmmedica/public_html/
     - /bin/echo "=== M2M deploy → $DEPLOYPATH ==="
-    - /bin/sh -c 'if [ ! -f dist/index.html ]; then if command -v node >/dev/null 2>&1 && command -v npm >/dev/null 2>&1; then /bin/echo "Building on server..."; export NODE_ENV=production; npm ci --no-audit --no-fund 2>/dev/null || npm install --no-audit --no-fund; npm run build; else /bin/echo "ERROR: dist/ missing and Node/npm unavailable. Use GitHub Actions branch cpanel-release or build locally and commit dist."; exit 1; fi; fi'
+    - /bin/sh -c 'if [ ! -f dist/index.html ]; then if command -v node >/dev/null 2>&1 && command -v npm >/dev/null 2>&1; then export NODE_ENV=production; npm ci --no-audit --no-fund 2>/dev/null || npm install --no-audit --no-fund; npm run build; else echo "ERROR: dist/ missing. Deploy branch cpanel-release or enable Node on server."; exit 1; fi; fi'
     - /bin/test -f dist/index.html || (/bin/echo "ERROR: dist/index.html missing" && /bin/false)
-    - /bin/test -f dist/.htaccess || /bin/echo "WARNING: dist/.htaccess missing — SPA routes may 404 on refresh"
-    - /bin/mkdir -p "$DEPLOYPATH"
-    - /bin/cp -R dist/. "$DEPLOYPATH"
-    - /bin/echo "Done. Test https://m2mmedical.com/ and https://m2mmedical.com/admin/login"
+    - /bin/chmod +x scripts/cpanel-publish.sh
+    - /bin/sh scripts/cpanel-publish.sh "$DEPLOYPATH" dist
+    - /bin/echo "Done. Unrelated public_html files were not removed."

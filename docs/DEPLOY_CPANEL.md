@@ -34,9 +34,9 @@ Examples (only one is correct for your account):
 - `/home/mmmedica/public_html/m2mmedical.com`
 - `/home/mmmedica/domains/m2mmedical.com/public_html`
 
-Edit **`deploy/DEPLOYPATH`** in Git (single line, trailing slash OK) to that path, commit, push.
+**Confirmed for this project:** `/home/mmmedica/public_html/` (see `deploy/DEPLOYPATH`).
 
-We **cannot** verify this from the repository alone.
+Deploy writes **directly to that folder root** (`index.html` at `/home/mmmedica/public_html/index.html`), not into `m2mmedical-main` or other subfolders. Unrelated files in `public_html` are **not deleted** — only matching paths are overwritten.
 
 ---
 
