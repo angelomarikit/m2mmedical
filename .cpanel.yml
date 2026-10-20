@@ -1,31 +1,16 @@
 ---
-# cPanel Git Version Control — deployment tasks (runs in the repository checkout, NOT in public_html).
-#
-# BEFORE FIRST DEPLOY:
-# 1. In cPanel → Domains / Domains → confirm document root for m2mmedical.com
-#    (often /home/mmmedica/public_html — adjust CPANEL_DOCROOT below if different).
-# 2. Back up existing public_html if the live site has files you need.
-# 3. Create .env.production in this repo directory on the server (see .env.production.example).
-#    Do NOT put .env files under public_html.
-# 4. Ensure Node.js 18+ is available for `npm run build` (cPanel → Setup Node.js App or SSH `node -v`).
-#
-# This workflow builds locally on the server and copies ONLY dist/ to the document root.
-# It does NOT publish source, node_modules, supabase/, scripts/, or secrets.
+# Runs in the Git repo checkout — builds Vite, copies only dist/ to document root.
+# Confirm DEPLOYPATH matches cPanel → Domains → document root.
+# Put .env.production in this repo folder (not in public_html). See .env.production.example
 
 deployment:
   tasks:
-    - /bin/echo "=== M2M Medical static deploy (Vite build → document root) ==="
-    - export CPANEL_DOCROOT=/home/mmmedica/public_html
-    - /bin/test -d "$CPANEL_DOCROOT" || (/bin/echo "ERROR: CPANEL_DOCROOT does not exist. Fix path in .cpanel.yml" && /bin/false)
-    - /bin/echo "Target document root: $CPANEL_DOCROOT"
-    - /bin/echo "Build from: $(/bin/pwd)"
+    - export DEPLOYPATH=/home/mmmedica/public_html/
     - export NODE_ENV=production
-    - /bin/echo "Node: $(node -v 2>/dev/null || echo 'NOT FOUND — install Node 18+ in cPanel')"
-    - node -v >/dev/null 2>&1 || (/bin/echo "ERROR: node not in PATH" && /bin/false)
+    - node -v >/dev/null 2>&1 || (/bin/echo "ERROR: node not in PATH — enable Node 18+ in cPanel" && /bin/false)
     - npm ci --no-audit --no-fund 2>/dev/null || npm install --no-audit --no-fund
-    - /bin/test -f .env.production || /bin/echo "WARNING: .env.production missing — build may lack Supabase keys"
+    - /bin/test -f .env.production || /bin/echo "WARNING: .env.production missing — Supabase may not work until you add VITE_* keys"
     - npm run build
-    - /bin/test -d dist || (/bin/echo "ERROR: dist/ missing after build" && /bin/false)
-    - /bin/echo "Publishing dist/ to $CPANEL_DOCROOT (add --delete to rsync only after you approve replacing all live files)"
-    - if command -v rsync >/dev/null 2>&1; then rsync -a dist/ "$CPANEL_DOCROOT/"; else /bin/cp -R dist/. "$CPANEL_DOCROOT/"; fi
-    - /bin/echo "Done. Verify https://your-domain/ and /admin/login"
+    - /bin/test -d dist || (/bin/echo "ERROR: dist/ missing after npm run build" && /bin/false)
+    - /bin/mkdir -p "$DEPLOYPATH"
+    - /bin/cp -R dist/. "$DEPLOYPATH"
