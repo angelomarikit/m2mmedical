@@ -17,10 +17,38 @@ Common causes on this account:
 
 1. **Wrong folder** — Source or old zips under `public_html/m2mmedical-main` or `public_html/m2mmedical.com` while the **domain document root** points elsewhere.
 2. **Source deployed** instead of **`dist/`** (Vite build output).
-3. **Missing `.htaccess`** — refresh on `/admin` or `/products/...` returns 404.
-4. **Supabase keys** not baked into the build (`VITE_*` missing at build time).
+3. **Publish never reached `public_html`** — cPanel runs **each** `.cpanel.yml` line in a **new shell**, so a separate `export DEPLOYPATH=...` line does **not** apply to the next line. The publish script must run in **one** `/bin/sh -c '...'` task with the full path inline (fixed in this repo).
+4. **Stale `public_html/assets/`** — Old files from 2017 can remain beside new hashed Vite bundles; if **`public_html/index.html` was not updated**, the browser still loads broken JS. After a good deploy, **`index.html` and `assets/*.js` dates should match today’s deploy** (see `DEPLOY_MANIFEST.json` in `public_html`).
+5. **Missing `.htaccess`** — refresh on `/admin` or `/products/...` returns 404.
+6. **Supabase keys** not baked into the build (`VITE_*` missing at build time).
 
 **Do not deploy into `m2mmedical-main`** unless that path is confirmed as the document root for https://m2mmedical.com.
+
+---
+
+## Exact deploy paths (confirmed)
+
+| | Path |
+|---|---|
+| **Git clone (cPanel)** | `/home/mmmedica/repositories/m2mmedical` |
+| **Branch to track** | **`cpanel-release`** (built static site at repo root) |
+| **Deploy source (after Git pull)** | `/home/mmmedica/repositories/m2mmedical/` → `index.html`, `assets/`, `.htaccess`, `cpanel-publish.sh` |
+| **Deploy target (document root)** | `/home/mmmedica/public_html/` |
+| **Not the live site root** | `public_html/m2mmedical-main/`, `public_html/m2mmedical.com/` (unless Domains says otherwise) |
+
+### Files overwritten at target (merge only)
+
+Deploy **copies** these paths into `public_html/` (same relative path). It does **not** delete other folders (e.g. old `m2mmedical-main`).
+
+| Overwritten | Notes |
+|-------------|--------|
+| `index.html` | Must reference `/assets/*.js` that exist after copy |
+| `.htaccess` | SPA + `/admin` refresh |
+| `assets/*` | New Vite hashed files merged in; **old unused JS/CSS in `assets/` may remain** until you remove them manually |
+| `favicon.png`, `logo.png`, `robots.txt`, `sitemap.xml`, `catalog/`, `data/`, etc. | From Vite `public/` |
+| `DEPLOY_MANIFEST.json` | Build audit (optional) |
+
+**Approval:** Overwriting the rows above is required for the site to work. Removing unrelated directories is **optional** and manual only.
 
 ---
 
@@ -108,12 +136,21 @@ npm run build:verify
 
 ---
 
-## cPanel clicks
+## cPanel clicks (required — Cursor cannot run these)
 
-1. **Git Version Control** → repository `m2mmedical` → **Update from Remote**
-2. Branch: **`cpanel-release`** (recommended) or **`main`**
-3. **Deploy HEAD Commit**
-4. Open https://m2mmedical.com/ and https://m2mmedical.com/admin/login
+1. **Git Version Control** → repository `m2mmedical`.
+2. **Repository Path** must be `/home/mmmedica/repositories/m2mmedical`.
+3. **Branch:** set to **`cpanel-release`** (not `main` unless Node build on server is confirmed).
+4. Click **Update from Remote** — wait until it finishes without error.
+5. Confirm in **File Manager** → `repositories/m2mmedical/index.html` exists and **`assets/`** contains files named like `index-*.js` (not only 2017-era names).
+6. Click **Deploy HEAD Commit** — read the deploy log; it must include:
+   - `M2M publish: ... -> /home/mmmedica/public_html/`
+   - `OK: Published to /home/mmmedica/public_html/`
+7. **File Manager** → `public_html/index.html` — check **Last Modified** is today.
+8. **File Manager** → `public_html/assets/` — confirm **new** `index-*.js` / `AdminApp-*.js` with today’s date.
+9. Browser: https://m2mmedical.com/ and hard-refresh https://m2mmedical.com/admin/login (Ctrl+F5).
+
+If deploy log shows success but `public_html/index.html` is still old, the tracked branch is wrong or `.cpanel.yml` on the server is outdated — repeat step 4–6 after GitHub Actions updates `cpanel-release`.
 
 ---
 

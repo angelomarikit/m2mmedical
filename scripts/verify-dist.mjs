@@ -21,6 +21,7 @@ if (!fs.existsSync(assets)) {
 }
 
 const js = fs.readdirSync(assets).filter((f) => f.endsWith('.js'))
+const css = fs.readdirSync(assets).filter((f) => f.endsWith('.css'))
 if (js.length === 0) {
   console.error('No JS bundles in dist/assets/')
   process.exit(1)
@@ -32,4 +33,33 @@ if (!html.includes('/assets/')) {
   process.exit(1)
 }
 
-console.log('dist/ OK:', { jsBundles: js.length, htaccess: true })
+/** Paths referenced by Vite-built index.html must exist under dist/ */
+const refs = [
+  ...html.matchAll(/(?:src|href)=["'](\/assets\/[^"']+)["']/g),
+].map((m) => m[1])
+
+const missing = refs.filter((rel) => {
+  const file = path.join(root, rel.replace(/^\//, ''))
+  return !fs.existsSync(file)
+})
+
+if (missing.length) {
+  console.error('index.html references missing files:', missing)
+  process.exit(1)
+}
+
+const manifest = {
+  builtAt: new Date().toISOString(),
+  jsBundles: js,
+  cssBundles: css,
+  indexAssetRefs: refs,
+}
+
+fs.writeFileSync(path.join(root, 'DEPLOY_MANIFEST.json'), JSON.stringify(manifest, null, 2))
+
+console.log('dist/ OK:', {
+  jsBundles: js.length,
+  cssBundles: css.length,
+  htaccess: true,
+  indexAssetRefs: refs.length,
+})

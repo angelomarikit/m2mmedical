@@ -1,0 +1,4 @@
+# cPanel runs publish scripts on Linux — CRLF breaks #!/bin/sh
+*.sh text eol=lf
+.cpanel.yml text eol=lf
+deploy/*.yml text eol=lf

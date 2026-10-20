@@ -1,12 +1,8 @@
 ---
-# Branch cpanel-release: checkout root IS the Vite build (index.html, assets/, .htaccess).
-# Target: domain document root — NOT public_html/m2mmedical-main or other subfolders.
+# Branch cpanel-release: repo root IS the Vite build (index.html, assets/, .htaccess).
+# Target: /home/mmmedica/public_html/ — NOT a subfolder.
+# NOTE: Each .cpanel.yml line is a separate shell on cPanel; DEPLOYPATH must live in one -c block.
 
 deployment:
   tasks:
-    - export DEPLOYPATH=__DEPLOYPATH__
-    - /bin/echo "=== M2M static publish → $DEPLOYPATH (merge only, no delete) ==="
-    - /bin/test -f index.html || (/bin/echo "ERROR: index.html missing on cpanel-release branch" && /bin/false)
-    - /bin/chmod +x cpanel-publish.sh 2>/dev/null || true
-    - /bin/sh cpanel-publish.sh "$DEPLOYPATH" .
-    - /bin/echo "Verify https://m2mmedical.com/ and https://m2mmedical.com/admin/login"
+    - /bin/sh -c 'set -eu; DEPLOYPATH="__DEPLOYPATH__"; REPO=/home/mmmedica/repositories/m2mmedical; cd "$REPO"; echo "=== M2M publish: $REPO -> $DEPLOYPATH ==="; test -f index.html || (echo "ERROR: index.html missing — track branch cpanel-release and Update from Remote" && exit 1); chmod +x cpanel-publish.sh 2>/dev/null || true; /bin/sh cpanel-publish.sh "$DEPLOYPATH" .; echo "Check public_html/index.html and public_html/assets/ dates after deploy."'

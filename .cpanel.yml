@@ -1,15 +1,9 @@
 ---
-# Git repo: /home/mmmedica/repositories/m2mmedical
-# Document root (confirmed): /home/mmmedica/public_html/
-# Copies ONLY dist/ build output — never src/, node_modules, or .env
+# Git clone: /home/mmmedica/repositories/m2mmedical
+# Document root: /home/mmmedica/public_html/
+# Recommended branch in cPanel: cpanel-release (built static files, no Node).
+# Each task line is a separate shell — use single /bin/sh -c blocks.
 
 deployment:
   tasks:
-    - export DEPLOYPATH=$(/bin/cat deploy/DEPLOYPATH 2>/dev/null | /usr/bin/tr -d '\r\n\t ')
-    - /bin/test -n "$DEPLOYPATH" || export DEPLOYPATH=/home/mmmedica/public_html/
-    - /bin/echo "=== M2M deploy → $DEPLOYPATH ==="
-    - /bin/sh -c 'if [ ! -f dist/index.html ]; then if command -v node >/dev/null 2>&1 && command -v npm >/dev/null 2>&1; then export NODE_ENV=production; npm ci --no-audit --no-fund 2>/dev/null || npm install --no-audit --no-fund; npm run build; else echo "ERROR: dist/ missing. Deploy branch cpanel-release or enable Node on server."; exit 1; fi; fi'
-    - /bin/test -f dist/index.html || (/bin/echo "ERROR: dist/index.html missing" && /bin/false)
-    - /bin/chmod +x scripts/cpanel-publish.sh
-    - /bin/sh scripts/cpanel-publish.sh "$DEPLOYPATH" dist
-    - /bin/echo "Done. Unrelated public_html files were not removed."
+    - /bin/sh -c 'set -eu; DEPLOYPATH=$(tr -d "\r\n\t " < deploy/DEPLOYPATH 2>/dev/null || true); test -n "$DEPLOYPATH" || DEPLOYPATH=/home/mmmedica/public_html/; REPO=/home/mmmedica/repositories/m2mmedical; cd "$REPO"; echo "=== M2M deploy (main) -> $DEPLOYPATH ==="; if test -f index.html && test ! -f dist/index.html; then echo "Detected cpanel-release layout at repo root."; SRC=.; PUBLISH=./cpanel-publish.sh; elif test -f dist/index.html; then SRC=dist; PUBLISH=./scripts/cpanel-publish.sh; else echo "ERROR: No built site in this checkout. In cPanel Git: set branch to cpanel-release, Update from Remote, Deploy HEAD Commit. Do not rely on npm on shared hosting unless Node is confirmed."; exit 1; fi; chmod +x "$PUBLISH" 2>/dev/null || true; /bin/sh "$PUBLISH" "$DEPLOYPATH" "$SRC"; echo "Done (merge only — unrelated public_html files kept)."'
