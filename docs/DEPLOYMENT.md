@@ -1,6 +1,17 @@
 # Deployment — Vercel
 
-## Build settings
+## Git branch (important)
+
+| Branch | Use on Vercel? | Why |
+|--------|----------------|-----|
+| **`main`** | **Yes** (recommended) | Full source; run `npm run build` → `dist/` |
+| **`cpanel-release`** | Only with static config | Prebuilt static files for **cPanel** — no `package.json`, no Vite. If Vercel builds this branch without overrides you get `vite: command not found`. |
+
+**Production on cPanel (m2mmedical.com):** deploy branch **`cpanel-release`** in cPanel Git only — see `docs/DEPLOY_CPANEL.md`.
+
+**Vercel:** set **Production Branch** to **`main`**, or keep `cpanel-release` only if the branch includes `vercel.json` with empty build (GitHub Actions copies `deploy/vercel-cpanel-release.json` into `cpanel-release`).
+
+## Build settings (branch `main`)
 
 - **Framework preset:** Vite
 - **Build command:** `npm run build`

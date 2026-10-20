@@ -77,6 +77,8 @@ Deploy writes **directly to that folder root** (`index.html` at `/home/mmmedica/
 
 GitHub Actions on push to `main` updates **`cpanel-release`**. cPanel must **check out `cpanel-release`**, not `main`.
 
+**Do not point Vercel at `cpanel-release` unless you want a static mirror** (no Vite build). For Vercel previews from source, use branch **`main`**. See `docs/DEPLOYMENT.md`.
+
 ### Branch `cpanel-release` (required on cPanel; no Node on server)
 
 1. GitHub → repo **Settings → Secrets and variables → Actions**:

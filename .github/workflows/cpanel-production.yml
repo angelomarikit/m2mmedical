@@ -68,6 +68,7 @@ jobs:
           sed "s|__DEPLOYPATH__|${DEPLOYPATH}|g" deploy/cpanel-static-deploy.yml > dist/.cpanel.yml
           cp scripts/cpanel-publish.sh dist/cpanel-publish.sh
           cp deploy/CPANEL_BRANCH dist/CPANEL_BRANCH
+          cp deploy/vercel-cpanel-release.json dist/vercel.json
           chmod +x dist/cpanel-publish.sh
 
       - name: Publish cpanel-release branch
