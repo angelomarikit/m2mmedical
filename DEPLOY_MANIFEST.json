@@ -1,0 +1,23 @@
+{
+  "builtAt": "2026-10-20T05:49:28.281Z",
+  "jsBundles": [
+    "AdminApp-GoSDEVMW.js",
+    "admin-B6mKifTb.js",
+    "index-CW5Owd_i.js",
+    "supabase-s3XNS0mn.js",
+    "vendor-B8mZaPgD.js"
+  ],
+  "cssBundles": [
+    "index-BsoEYTiq.css"
+  ],
+  "indexAssetRefs": [
+    "/assets/index-CW5Owd_i.js",
+    "/assets/vendor-B8mZaPgD.js",
+    "/assets/supabase-s3XNS0mn.js",
+    "/assets/index-BsoEYTiq.css"
+  ],
+  "cpanelGitBranch": "cpanel-release",
+  "sourceMainCommit": "f50f1c58101106f5db6bc2e1f91aed432bdf4af3",
+  "deployTarget": "/home/mmmedica/public_html/",
+  "cpanelClonePath": "/home/mmmedica/repositories/m2mmedical"
+}

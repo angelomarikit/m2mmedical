@@ -1,0 +1,7 @@
+---
+# Branch cpanel-release ONLY: repo root = Vite production build.
+# Target: /home/mmmedica/public_html/ (document root, not a subfolder).
+
+deployment:
+  tasks:
+    - /bin/sh -c 'set -eu; DEPLOYPATH="/home/mmmedica/public_html/"; REPO=/home/mmmedica/repositories/m2mmedical; cd "$REPO"; echo "=== M2M publish (cpanel-release) -> $DEPLOYPATH ==="; test ! -f package.json || (echo "ERROR: package.json present — cPanel is on main, not cpanel-release. Change branch to cpanel-release and Update from Remote." && exit 1); test -f index.html || (echo "ERROR: index.html missing on cpanel-release checkout" && exit 1); test -f DEPLOY_MANIFEST.json || (echo "ERROR: DEPLOY_MANIFEST.json missing — pull latest cpanel-release from GitHub" && exit 1); chmod +x cpanel-publish.sh 2>/dev/null || true; /bin/sh cpanel-publish.sh "$DEPLOYPATH" .; echo "Deployed cpanel-release to public_html. Verify DEPLOY_MANIFEST.json in public_html."'

@@ -1,0 +1,2019 @@
+{
+  "brands": [
+    {
+      "id": "nihon-kohden",
+      "slug": "nihon-kohden",
+      "name": "Nihon Kohden",
+      "logo_path": "patient-monitoring-ecg-defibrillators/06_nihon_kohden_logo_hd_transparent.png",
+      "is_active": true
+    },
+    {
+      "id": "medtronic",
+      "slug": "medtronic",
+      "name": "Medtronic",
+      "logo_path": "patient-monitoring-ecg-defibrillators/04_medtronic_logo_hd_transparent.png",
+      "is_active": true
+    },
+    {
+      "id": "nellcor",
+      "slug": "nellcor",
+      "name": "Nellcor",
+      "logo_path": null,
+      "is_active": true
+    },
+    {
+      "id": "neusoft",
+      "slug": "neusoft",
+      "name": "Neusoft",
+      "logo_path": "radiology-imaging-systems/03_brand_logos/original_transparent/neusoft_logo.png",
+      "is_active": true
+    },
+    {
+      "id": "fujifilm",
+      "slug": "fujifilm",
+      "name": "Fujifilm",
+      "logo_path": "infant-care-anesthesia-ultrasound/original_transparent/05_brand_logos/fujifilm_logo.png",
+      "is_active": true
+    },
+    {
+      "id": "edan",
+      "slug": "edan",
+      "name": "Edan",
+      "logo_path": "infant-care-anesthesia-ultrasound/original_transparent/05_brand_logos/edan_logo.png",
+      "is_active": true
+    },
+    {
+      "id": "comen",
+      "slug": "comen",
+      "name": "Comen",
+      "logo_path": "infant-care-anesthesia-ultrasound/original_transparent/05_brand_logos/comen_logo.png",
+      "is_active": true
+    }
+  ],
+  "collections": [
+    {
+      "id": "medical-accessories",
+      "parent_id": null,
+      "slug": "medical-accessories",
+      "name": "Medical Accessories",
+      "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+      "sort_order": 0,
+      "is_published": true
+    },
+    {
+      "id": "disposable-accessories",
+      "parent_id": "medical-accessories",
+      "slug": "disposable-accessories",
+      "name": "Disposable Accessories",
+      "description": null,
+      "sort_order": 1,
+      "is_published": true
+    },
+    {
+      "id": "reusable-accessories",
+      "parent_id": "medical-accessories",
+      "slug": "reusable-accessories",
+      "name": "Reusable Accessories",
+      "description": null,
+      "sort_order": 2,
+      "is_published": true
+    },
+    {
+      "id": "spo2-sensors",
+      "parent_id": "medical-accessories",
+      "slug": "spo2-sensors",
+      "name": "SpO2 Sensors",
+      "description": null,
+      "sort_order": 3,
+      "is_published": true
+    },
+    {
+      "id": "ecg-cables-leadwires",
+      "parent_id": "medical-accessories",
+      "slug": "ecg-cables-leadwires",
+      "name": "ECG Cables & Leadwires",
+      "description": null,
+      "sort_order": 4,
+      "is_published": true
+    },
+    {
+      "id": "patient-monitoring-cardiology",
+      "parent_id": null,
+      "slug": "patient-monitoring-cardiology",
+      "name": "Patient Monitoring & Cardiology",
+      "description": "Patient monitors, ECG, defibrillators, and bedside monitoring.",
+      "sort_order": 5,
+      "is_published": true
+    },
+    {
+      "id": "infant-care",
+      "parent_id": null,
+      "slug": "infant-care",
+      "name": "Infant Care",
+      "description": "Infant incubators and phototherapy systems.",
+      "sort_order": 6,
+      "is_published": true
+    },
+    {
+      "id": "anesthesia",
+      "parent_id": null,
+      "slug": "anesthesia",
+      "name": "Anesthesia",
+      "description": "Anesthesia machines and related equipment.",
+      "sort_order": 7,
+      "is_published": true
+    },
+    {
+      "id": "ultrasound-fetal-monitoring",
+      "parent_id": null,
+      "slug": "ultrasound-fetal-monitoring",
+      "name": "Ultrasound & Fetal Monitoring",
+      "description": "Ultrasound systems and fetal monitoring equipment.",
+      "sort_order": 8,
+      "is_published": true
+    },
+    {
+      "id": "radiology-imaging",
+      "parent_id": null,
+      "slug": "radiology-imaging",
+      "name": "Radiology & Imaging",
+      "description": "Digital radiography, mammography, MRI, angiography, and imaging accessories.",
+      "sort_order": 9,
+      "is_published": true
+    }
+  ],
+  "products": [
+    {
+      "id": "cardiofax-m-ecg-3350",
+      "slug": "cardiofax-m-ecg-3350",
+      "name": "Cardiofax M (ECG-3350) Electrocardiogram Machine",
+      "model_number": "ECG-3350",
+      "brand_id": "nihon-kohden",
+      "short_description": null,
+      "product_type": "equipment",
+      "status": "published",
+      "is_featured": true,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.808Z",
+      "updated_at": "2026-10-19T06:54:49.808Z",
+      "brand": {
+        "id": "nihon-kohden",
+        "slug": "nihon-kohden",
+        "name": "Nihon Kohden",
+        "logo_path": "patient-monitoring-ecg-defibrillators/06_nihon_kohden_logo_hd_transparent.png",
+        "is_active": true
+      },
+      "collections": [
+        {
+          "id": "patient-monitoring-cardiology",
+          "parent_id": null,
+          "slug": "patient-monitoring-cardiology",
+          "name": "Patient Monitoring & Cardiology",
+          "description": "Patient monitors, ECG, defibrillators, and bedside monitoring.",
+          "sort_order": 5,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "cardiofax-m-ecg-3350-img",
+          "product_id": "cardiofax-m-ecg-3350",
+          "storage_path": "patient-monitoring-ecg-defibrillators/01_cardiofax_m_ecg_3350_hd_transparent.png",
+          "alt_text": "Cardiofax M (ECG-3350) Electrocardiogram Machine",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "cardiolife-tec-5631",
+      "slug": "cardiolife-tec-5631",
+      "name": "TEC-5631 Cardiolife Defibrillator",
+      "model_number": "TEC-5631",
+      "brand_id": "nihon-kohden",
+      "short_description": null,
+      "product_type": "equipment",
+      "status": "published",
+      "is_featured": true,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.808Z",
+      "updated_at": "2026-10-19T06:54:49.808Z",
+      "brand": {
+        "id": "nihon-kohden",
+        "slug": "nihon-kohden",
+        "name": "Nihon Kohden",
+        "logo_path": "patient-monitoring-ecg-defibrillators/06_nihon_kohden_logo_hd_transparent.png",
+        "is_active": true
+      },
+      "collections": [
+        {
+          "id": "patient-monitoring-cardiology",
+          "parent_id": null,
+          "slug": "patient-monitoring-cardiology",
+          "name": "Patient Monitoring & Cardiology",
+          "description": "Patient monitors, ECG, defibrillators, and bedside monitoring.",
+          "sort_order": 5,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "cardiolife-tec-5631-img",
+          "product_id": "cardiolife-tec-5631",
+          "storage_path": "patient-monitoring-ecg-defibrillators/02_cardiolife_tec_5631_defibrillator_hd_transparent.png",
+          "alt_text": "TEC-5631 Cardiolife Defibrillator",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "life-scope-g5",
+      "slug": "life-scope-g5",
+      "name": "Life Scope G5 Cardiac Monitor",
+      "model_number": "Life Scope G5",
+      "brand_id": "nihon-kohden",
+      "short_description": null,
+      "product_type": "equipment",
+      "status": "published",
+      "is_featured": true,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.808Z",
+      "updated_at": "2026-10-19T06:54:49.808Z",
+      "brand": {
+        "id": "nihon-kohden",
+        "slug": "nihon-kohden",
+        "name": "Nihon Kohden",
+        "logo_path": "patient-monitoring-ecg-defibrillators/06_nihon_kohden_logo_hd_transparent.png",
+        "is_active": true
+      },
+      "collections": [
+        {
+          "id": "patient-monitoring-cardiology",
+          "parent_id": null,
+          "slug": "patient-monitoring-cardiology",
+          "name": "Patient Monitoring & Cardiology",
+          "description": "Patient monitors, ECG, defibrillators, and bedside monitoring.",
+          "sort_order": 5,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "life-scope-g5-img",
+          "product_id": "life-scope-g5",
+          "storage_path": "patient-monitoring-ecg-defibrillators/03_life_scope_g5_cardiac_monitor_hd_transparent.png",
+          "alt_text": "Life Scope G5 Cardiac Monitor",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "nellcor-bedside-spo2",
+      "slug": "nellcor-bedside-spo2",
+      "name": "Nellcor Bedside SpO2 Patient Monitor",
+      "model_number": null,
+      "brand_id": "nellcor",
+      "short_description": null,
+      "product_type": "equipment",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.808Z",
+      "updated_at": "2026-10-19T06:54:49.808Z",
+      "brand": {
+        "id": "nellcor",
+        "slug": "nellcor",
+        "name": "Nellcor",
+        "logo_path": null,
+        "is_active": true
+      },
+      "collections": [
+        {
+          "id": "patient-monitoring-cardiology",
+          "parent_id": null,
+          "slug": "patient-monitoring-cardiology",
+          "name": "Patient Monitoring & Cardiology",
+          "description": "Patient monitors, ECG, defibrillators, and bedside monitoring.",
+          "sort_order": 5,
+          "is_published": true
+        },
+        {
+          "id": "spo2-sensors",
+          "parent_id": "medical-accessories",
+          "slug": "spo2-sensors",
+          "name": "SpO2 Sensors",
+          "description": null,
+          "sort_order": 3,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "nellcor-bedside-spo2-img",
+          "product_id": "nellcor-bedside-spo2",
+          "storage_path": "patient-monitoring-ecg-defibrillators/05_nellcor_bedside_spo2_monitor_hd_transparent.png",
+          "alt_text": "Nellcor Bedside SpO2 Patient Monitor",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "b10-hybrid-infant-incubator",
+      "slug": "b10-hybrid-infant-incubator",
+      "name": "B10 Hybrid Infant Incubator",
+      "model_number": "B10",
+      "brand_id": null,
+      "short_description": null,
+      "product_type": "equipment",
+      "status": "published",
+      "is_featured": true,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.808Z",
+      "updated_at": "2026-10-19T06:54:49.808Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "infant-care",
+          "parent_id": null,
+          "slug": "infant-care",
+          "name": "Infant Care",
+          "description": "Infant incubators and phototherapy systems.",
+          "sort_order": 6,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "b10-hybrid-infant-incubator-img",
+          "product_id": "b10-hybrid-infant-incubator",
+          "storage_path": "infant-care-anesthesia-ultrasound/original_transparent/01_infant_care/b10_hybrid_infant_incubator.png",
+          "alt_text": "B10 Hybrid Infant Incubator",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "bl70-infant-phototherapy",
+      "slug": "bl70-infant-phototherapy",
+      "name": "BL70 Infant Phototherapy",
+      "model_number": "BL70",
+      "brand_id": null,
+      "short_description": null,
+      "product_type": "equipment",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.808Z",
+      "updated_at": "2026-10-19T06:54:49.808Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "infant-care",
+          "parent_id": null,
+          "slug": "infant-care",
+          "name": "Infant Care",
+          "description": "Infant incubators and phototherapy systems.",
+          "sort_order": 6,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "bl70-infant-phototherapy-img",
+          "product_id": "bl70-infant-phototherapy",
+          "storage_path": "infant-care-anesthesia-ultrasound/original_transparent/01_infant_care/bl70_infant_phototherapy.png",
+          "alt_text": "BL70 Infant Phototherapy",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "ax-800-anesthesia",
+      "slug": "ax-800-anesthesia",
+      "name": "AX-800 Anesthesia Machine",
+      "model_number": "AX-800",
+      "brand_id": null,
+      "short_description": null,
+      "product_type": "equipment",
+      "status": "published",
+      "is_featured": true,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.808Z",
+      "updated_at": "2026-10-19T06:54:49.808Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "anesthesia",
+          "parent_id": null,
+          "slug": "anesthesia",
+          "name": "Anesthesia",
+          "description": "Anesthesia machines and related equipment.",
+          "sort_order": 7,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "ax-800-anesthesia-img",
+          "product_id": "ax-800-anesthesia",
+          "storage_path": "infant-care-anesthesia-ultrasound/original_transparent/02_anesthesia/ax_800_anesthesia_machine.png",
+          "alt_text": "AX-800 Anesthesia Machine",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "edan-f12-fetal-monitor",
+      "slug": "edan-f12-fetal-monitor",
+      "name": "Edan F12 Fetal Monitor",
+      "model_number": null,
+      "brand_id": "edan",
+      "short_description": null,
+      "product_type": "equipment",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.808Z",
+      "updated_at": "2026-10-19T06:54:49.808Z",
+      "brand": {
+        "id": "edan",
+        "slug": "edan",
+        "name": "Edan",
+        "logo_path": "infant-care-anesthesia-ultrasound/original_transparent/05_brand_logos/edan_logo.png",
+        "is_active": true
+      },
+      "collections": [
+        {
+          "id": "ultrasound-fetal-monitoring",
+          "parent_id": null,
+          "slug": "ultrasound-fetal-monitoring",
+          "name": "Ultrasound & Fetal Monitoring",
+          "description": "Ultrasound systems and fetal monitoring equipment.",
+          "sort_order": 8,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "edan-f12-fetal-monitor-img",
+          "product_id": "edan-f12-fetal-monitor",
+          "storage_path": "infant-care-anesthesia-ultrasound/original_transparent/03_fetal_monitoring/edan_f12_fetal_monitor.png",
+          "alt_text": "Edan F12 Fetal Monitor",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "acclarix-ax9-ultrasound",
+      "slug": "acclarix-ax9-ultrasound",
+      "name": "Acclarix AX9 Ultrasound",
+      "model_number": "AX9",
+      "brand_id": null,
+      "short_description": null,
+      "product_type": "equipment",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.808Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "ultrasound-fetal-monitoring",
+          "parent_id": null,
+          "slug": "ultrasound-fetal-monitoring",
+          "name": "Ultrasound & Fetal Monitoring",
+          "description": "Ultrasound systems and fetal monitoring equipment.",
+          "sort_order": 8,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "acclarix-ax9-ultrasound-img",
+          "product_id": "acclarix-ax9-ultrasound",
+          "storage_path": "infant-care-anesthesia-ultrasound/original_transparent/04_ultrasound/acclarix_ax9_ultrasound.png",
+          "alt_text": "Acclarix AX9 Ultrasound",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "edan-nano-c5",
+      "slug": "edan-nano-c5",
+      "name": "Edan Nano C5 Ultrasound",
+      "model_number": null,
+      "brand_id": "edan",
+      "short_description": null,
+      "product_type": "equipment",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": {
+        "id": "edan",
+        "slug": "edan",
+        "name": "Edan",
+        "logo_path": "infant-care-anesthesia-ultrasound/original_transparent/05_brand_logos/edan_logo.png",
+        "is_active": true
+      },
+      "collections": [
+        {
+          "id": "ultrasound-fetal-monitoring",
+          "parent_id": null,
+          "slug": "ultrasound-fetal-monitoring",
+          "name": "Ultrasound & Fetal Monitoring",
+          "description": "Ultrasound systems and fetal monitoring equipment.",
+          "sort_order": 8,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "edan-nano-c5-img",
+          "product_id": "edan-nano-c5",
+          "storage_path": "infant-care-anesthesia-ultrasound/original_transparent/04_ultrasound/edan_nano_c5_ultrasound.png",
+          "alt_text": "Edan Nano C5 Ultrasound",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "edan-nano-l12",
+      "slug": "edan-nano-l12",
+      "name": "Edan Nano L12 Ultrasound",
+      "model_number": null,
+      "brand_id": "edan",
+      "short_description": null,
+      "product_type": "equipment",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": {
+        "id": "edan",
+        "slug": "edan",
+        "name": "Edan",
+        "logo_path": "infant-care-anesthesia-ultrasound/original_transparent/05_brand_logos/edan_logo.png",
+        "is_active": true
+      },
+      "collections": [
+        {
+          "id": "ultrasound-fetal-monitoring",
+          "parent_id": null,
+          "slug": "ultrasound-fetal-monitoring",
+          "name": "Ultrasound & Fetal Monitoring",
+          "description": "Ultrasound systems and fetal monitoring equipment.",
+          "sort_order": 8,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "edan-nano-l12-img",
+          "product_id": "edan-nano-l12",
+          "storage_path": "infant-care-anesthesia-ultrasound/original_transparent/04_ultrasound/edan_nano_l12_ultrasound.png",
+          "alt_text": "Edan Nano L12 Ultrasound",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "neucare-mammo-dr-hd",
+      "slug": "neucare-mammo-dr-hd",
+      "name": "NeuCare Mammo DR HD Digital Mammography System",
+      "model_number": null,
+      "brand_id": "neusoft",
+      "short_description": null,
+      "product_type": "equipment",
+      "status": "published",
+      "is_featured": true,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": {
+        "id": "neusoft",
+        "slug": "neusoft",
+        "name": "Neusoft",
+        "logo_path": "radiology-imaging-systems/03_brand_logos/original_transparent/neusoft_logo.png",
+        "is_active": true
+      },
+      "collections": [
+        {
+          "id": "radiology-imaging",
+          "parent_id": null,
+          "slug": "radiology-imaging",
+          "name": "Radiology & Imaging",
+          "description": "Digital radiography, mammography, MRI, angiography, and imaging accessories.",
+          "sort_order": 9,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "neucare-mammo-dr-hd-img",
+          "product_id": "neucare-mammo-dr-hd",
+          "storage_path": "radiology-imaging-systems/02_neusoft_equipment/original_transparent/neucare_mammo_dr_hd.png",
+          "alt_text": "NeuCare Mammo DR HD Digital Mammography System",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "neumr-rena-mri",
+      "slug": "neumr-rena-mri",
+      "name": "NeuMR RENA 1.5T MRI",
+      "model_number": null,
+      "brand_id": "neusoft",
+      "short_description": null,
+      "product_type": "equipment",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": {
+        "id": "neusoft",
+        "slug": "neusoft",
+        "name": "Neusoft",
+        "logo_path": "radiology-imaging-systems/03_brand_logos/original_transparent/neusoft_logo.png",
+        "is_active": true
+      },
+      "collections": [
+        {
+          "id": "radiology-imaging",
+          "parent_id": null,
+          "slug": "radiology-imaging",
+          "name": "Radiology & Imaging",
+          "description": "Digital radiography, mammography, MRI, angiography, and imaging accessories.",
+          "sort_order": 9,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "neumr-rena-mri-img",
+          "product_id": "neumr-rena-mri",
+          "storage_path": "radiology-imaging-systems/02_neusoft_equipment/original_transparent/neumr_rena_mri.png",
+          "alt_text": "NeuMR RENA 1.5T MRI",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "neuangio-33c",
+      "slug": "neuangio-33c",
+      "name": "NeuAngio 33C",
+      "model_number": null,
+      "brand_id": "neusoft",
+      "short_description": null,
+      "product_type": "equipment",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": {
+        "id": "neusoft",
+        "slug": "neusoft",
+        "name": "Neusoft",
+        "logo_path": "radiology-imaging-systems/03_brand_logos/original_transparent/neusoft_logo.png",
+        "is_active": true
+      },
+      "collections": [
+        {
+          "id": "radiology-imaging",
+          "parent_id": null,
+          "slug": "radiology-imaging",
+          "name": "Radiology & Imaging",
+          "description": "Digital radiography, mammography, MRI, angiography, and imaging accessories.",
+          "sort_order": 9,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "neuangio-33c-img",
+          "product_id": "neuangio-33c",
+          "storage_path": "radiology-imaging-systems/02_neusoft_equipment/original_transparent/neuangio_33c.png",
+          "alt_text": "NeuAngio 33C",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "fujifilm-fdr-xair",
+      "slug": "fujifilm-fdr-xair",
+      "name": "Fujifilm FDR Xair",
+      "model_number": null,
+      "brand_id": "fujifilm",
+      "short_description": null,
+      "product_type": "equipment",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": {
+        "id": "fujifilm",
+        "slug": "fujifilm",
+        "name": "Fujifilm",
+        "logo_path": "infant-care-anesthesia-ultrasound/original_transparent/05_brand_logos/fujifilm_logo.png",
+        "is_active": true
+      },
+      "collections": [
+        {
+          "id": "radiology-imaging",
+          "parent_id": null,
+          "slug": "radiology-imaging",
+          "name": "Radiology & Imaging",
+          "description": "Digital radiography, mammography, MRI, angiography, and imaging accessories.",
+          "sort_order": 9,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "fujifilm-fdr-xair-img",
+          "product_id": "fujifilm-fdr-xair",
+          "storage_path": "radiology-imaging-systems/01_fujifilm_equipment/original_transparent/fujifilm_fdr_xair.png",
+          "alt_text": "Fujifilm FDR Xair",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "fujifilm-fdr-devo-ii",
+      "slug": "fujifilm-fdr-devo-ii",
+      "name": "Fujifilm FDR D-EVO II",
+      "model_number": null,
+      "brand_id": "fujifilm",
+      "short_description": null,
+      "product_type": "equipment",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": {
+        "id": "fujifilm",
+        "slug": "fujifilm",
+        "name": "Fujifilm",
+        "logo_path": "infant-care-anesthesia-ultrasound/original_transparent/05_brand_logos/fujifilm_logo.png",
+        "is_active": true
+      },
+      "collections": [
+        {
+          "id": "radiology-imaging",
+          "parent_id": null,
+          "slug": "radiology-imaging",
+          "name": "Radiology & Imaging",
+          "description": "Digital radiography, mammography, MRI, angiography, and imaging accessories.",
+          "sort_order": 9,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "fujifilm-fdr-devo-ii-img",
+          "product_id": "fujifilm-fdr-devo-ii",
+          "storage_path": "radiology-imaging-systems/01_fujifilm_equipment/original_transparent/fujifilm_fdr_devo_ii.png",
+          "alt_text": "Fujifilm FDR D-EVO II",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "fujifilm-drypix-lite",
+      "slug": "fujifilm-drypix-lite",
+      "name": "Fujifilm DRYPIX Lite",
+      "model_number": null,
+      "brand_id": "fujifilm",
+      "short_description": null,
+      "product_type": "equipment",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": {
+        "id": "fujifilm",
+        "slug": "fujifilm",
+        "name": "Fujifilm",
+        "logo_path": "infant-care-anesthesia-ultrasound/original_transparent/05_brand_logos/fujifilm_logo.png",
+        "is_active": true
+      },
+      "collections": [
+        {
+          "id": "radiology-imaging",
+          "parent_id": null,
+          "slug": "radiology-imaging",
+          "name": "Radiology & Imaging",
+          "description": "Digital radiography, mammography, MRI, angiography, and imaging accessories.",
+          "sort_order": 9,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "fujifilm-drypix-lite-img",
+          "product_id": "fujifilm-drypix-lite",
+          "storage_path": "radiology-imaging-systems/01_fujifilm_equipment/original_transparent/fujifilm_drypix_lite.png",
+          "alt_text": "Fujifilm DRYPIX Lite",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "fujifilm-drypix-smart",
+      "slug": "fujifilm-drypix-smart",
+      "name": "Fujifilm DRYPIX Smart",
+      "model_number": null,
+      "brand_id": "fujifilm",
+      "short_description": null,
+      "product_type": "equipment",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": {
+        "id": "fujifilm",
+        "slug": "fujifilm",
+        "name": "Fujifilm",
+        "logo_path": "infant-care-anesthesia-ultrasound/original_transparent/05_brand_logos/fujifilm_logo.png",
+        "is_active": true
+      },
+      "collections": [
+        {
+          "id": "radiology-imaging",
+          "parent_id": null,
+          "slug": "radiology-imaging",
+          "name": "Radiology & Imaging",
+          "description": "Digital radiography, mammography, MRI, angiography, and imaging accessories.",
+          "sort_order": 9,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "fujifilm-drypix-smart-img",
+          "product_id": "fujifilm-drypix-smart",
+          "storage_path": "radiology-imaging-systems/01_fujifilm_equipment/original_transparent/fujifilm_drypix_smart.png",
+          "alt_text": "Fujifilm DRYPIX Smart",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "fujifilm-drypix-imaging-system",
+      "slug": "fujifilm-drypix-imaging-system",
+      "name": "Fujifilm DRYPIX Imaging System",
+      "model_number": null,
+      "brand_id": "fujifilm",
+      "short_description": "DRYPIX medical imaging printer line — confirm exact model with M2M.",
+      "product_type": "equipment",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": {
+        "id": "fujifilm",
+        "slug": "fujifilm",
+        "name": "Fujifilm",
+        "logo_path": "infant-care-anesthesia-ultrasound/original_transparent/05_brand_logos/fujifilm_logo.png",
+        "is_active": true
+      },
+      "collections": [
+        {
+          "id": "radiology-imaging",
+          "parent_id": null,
+          "slug": "radiology-imaging",
+          "name": "Radiology & Imaging",
+          "description": "Digital radiography, mammography, MRI, angiography, and imaging accessories.",
+          "sort_order": 9,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "fujifilm-drypix-imaging-system-img",
+          "product_id": "fujifilm-drypix-imaging-system",
+          "storage_path": "radiology-imaging-systems/01_fujifilm_equipment/original_transparent/fujifilm_drypix_product.png",
+          "alt_text": "Fujifilm DRYPIX Imaging System",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "medical-accessory-01",
+      "slug": "medical-accessory-01",
+      "name": "Medical Accessory 01",
+      "model_number": null,
+      "brand_id": null,
+      "short_description": "Catalog image from M2M assets — confirm exact product name and specifications with our team before ordering.",
+      "product_type": "disposable",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "medical-accessories",
+          "parent_id": null,
+          "slug": "medical-accessories",
+          "name": "Medical Accessories",
+          "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+          "sort_order": 0,
+          "is_published": true
+        },
+        {
+          "id": "disposable-accessories",
+          "parent_id": "medical-accessories",
+          "slug": "disposable-accessories",
+          "name": "Disposable Accessories",
+          "description": null,
+          "sort_order": 1,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "medical-accessory-01-img",
+          "product_id": "medical-accessory-01",
+          "storage_path": "medical-accessories/medical_accessory_01_hd_transparent.png",
+          "alt_text": "Medical Accessory 01",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "medical-accessory-02",
+      "slug": "medical-accessory-02",
+      "name": "Medical Accessory 02",
+      "model_number": null,
+      "brand_id": null,
+      "short_description": "Catalog image from M2M assets — confirm exact product name and specifications with our team before ordering.",
+      "product_type": "disposable",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "medical-accessories",
+          "parent_id": null,
+          "slug": "medical-accessories",
+          "name": "Medical Accessories",
+          "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+          "sort_order": 0,
+          "is_published": true
+        },
+        {
+          "id": "disposable-accessories",
+          "parent_id": "medical-accessories",
+          "slug": "disposable-accessories",
+          "name": "Disposable Accessories",
+          "description": null,
+          "sort_order": 1,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "medical-accessory-02-img",
+          "product_id": "medical-accessory-02",
+          "storage_path": "medical-accessories/medical_accessory_02_hd_transparent.png",
+          "alt_text": "Medical Accessory 02",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "medical-accessory-03",
+      "slug": "medical-accessory-03",
+      "name": "Medical Accessory 03",
+      "model_number": null,
+      "brand_id": null,
+      "short_description": "Catalog image from M2M assets — confirm exact product name and specifications with our team before ordering.",
+      "product_type": "disposable",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "medical-accessories",
+          "parent_id": null,
+          "slug": "medical-accessories",
+          "name": "Medical Accessories",
+          "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+          "sort_order": 0,
+          "is_published": true
+        },
+        {
+          "id": "disposable-accessories",
+          "parent_id": "medical-accessories",
+          "slug": "disposable-accessories",
+          "name": "Disposable Accessories",
+          "description": null,
+          "sort_order": 1,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "medical-accessory-03-img",
+          "product_id": "medical-accessory-03",
+          "storage_path": "medical-accessories/medical_accessory_03_hd_transparent.png",
+          "alt_text": "Medical Accessory 03",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "medical-accessory-04",
+      "slug": "medical-accessory-04",
+      "name": "Medical Accessory 04",
+      "model_number": null,
+      "brand_id": null,
+      "short_description": "Catalog image from M2M assets — confirm exact product name and specifications with our team before ordering.",
+      "product_type": "disposable",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "medical-accessories",
+          "parent_id": null,
+          "slug": "medical-accessories",
+          "name": "Medical Accessories",
+          "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+          "sort_order": 0,
+          "is_published": true
+        },
+        {
+          "id": "disposable-accessories",
+          "parent_id": "medical-accessories",
+          "slug": "disposable-accessories",
+          "name": "Disposable Accessories",
+          "description": null,
+          "sort_order": 1,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "medical-accessory-04-img",
+          "product_id": "medical-accessory-04",
+          "storage_path": "medical-accessories/medical_accessory_04_hd_transparent.png",
+          "alt_text": "Medical Accessory 04",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "medical-accessory-05",
+      "slug": "medical-accessory-05",
+      "name": "Medical Accessory 05",
+      "model_number": null,
+      "brand_id": null,
+      "short_description": "Catalog image from M2M assets — confirm exact product name and specifications with our team before ordering.",
+      "product_type": "disposable",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "medical-accessories",
+          "parent_id": null,
+          "slug": "medical-accessories",
+          "name": "Medical Accessories",
+          "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+          "sort_order": 0,
+          "is_published": true
+        },
+        {
+          "id": "disposable-accessories",
+          "parent_id": "medical-accessories",
+          "slug": "disposable-accessories",
+          "name": "Disposable Accessories",
+          "description": null,
+          "sort_order": 1,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "medical-accessory-05-img",
+          "product_id": "medical-accessory-05",
+          "storage_path": "medical-accessories/medical_accessory_05_hd_transparent.png",
+          "alt_text": "Medical Accessory 05",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "medical-accessory-06",
+      "slug": "medical-accessory-06",
+      "name": "Medical Accessory 06",
+      "model_number": null,
+      "brand_id": null,
+      "short_description": "Catalog image from M2M assets — confirm exact product name and specifications with our team before ordering.",
+      "product_type": "disposable",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "medical-accessories",
+          "parent_id": null,
+          "slug": "medical-accessories",
+          "name": "Medical Accessories",
+          "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+          "sort_order": 0,
+          "is_published": true
+        },
+        {
+          "id": "disposable-accessories",
+          "parent_id": "medical-accessories",
+          "slug": "disposable-accessories",
+          "name": "Disposable Accessories",
+          "description": null,
+          "sort_order": 1,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "medical-accessory-06-img",
+          "product_id": "medical-accessory-06",
+          "storage_path": "medical-accessories/medical_accessory_06_hd_transparent.png",
+          "alt_text": "Medical Accessory 06",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "medical-accessory-07",
+      "slug": "medical-accessory-07",
+      "name": "Medical Accessory 07",
+      "model_number": null,
+      "brand_id": null,
+      "short_description": "Catalog image from M2M assets — confirm exact product name and specifications with our team before ordering.",
+      "product_type": "disposable",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "medical-accessories",
+          "parent_id": null,
+          "slug": "medical-accessories",
+          "name": "Medical Accessories",
+          "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+          "sort_order": 0,
+          "is_published": true
+        },
+        {
+          "id": "disposable-accessories",
+          "parent_id": "medical-accessories",
+          "slug": "disposable-accessories",
+          "name": "Disposable Accessories",
+          "description": null,
+          "sort_order": 1,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "medical-accessory-07-img",
+          "product_id": "medical-accessory-07",
+          "storage_path": "medical-accessories/medical_accessory_07_hd_transparent.png",
+          "alt_text": "Medical Accessory 07",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "medical-accessory-08",
+      "slug": "medical-accessory-08",
+      "name": "Medical Accessory 08",
+      "model_number": null,
+      "brand_id": null,
+      "short_description": "Catalog image from M2M assets — confirm exact product name and specifications with our team before ordering.",
+      "product_type": "disposable",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "medical-accessories",
+          "parent_id": null,
+          "slug": "medical-accessories",
+          "name": "Medical Accessories",
+          "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+          "sort_order": 0,
+          "is_published": true
+        },
+        {
+          "id": "disposable-accessories",
+          "parent_id": "medical-accessories",
+          "slug": "disposable-accessories",
+          "name": "Disposable Accessories",
+          "description": null,
+          "sort_order": 1,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "medical-accessory-08-img",
+          "product_id": "medical-accessory-08",
+          "storage_path": "medical-accessories/medical_accessory_08_hd_transparent.png",
+          "alt_text": "Medical Accessory 08",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "medical-accessory-09",
+      "slug": "medical-accessory-09",
+      "name": "Medical Accessory 09",
+      "model_number": null,
+      "brand_id": null,
+      "short_description": "Catalog image from M2M assets — confirm exact product name and specifications with our team before ordering.",
+      "product_type": "disposable",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "medical-accessories",
+          "parent_id": null,
+          "slug": "medical-accessories",
+          "name": "Medical Accessories",
+          "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+          "sort_order": 0,
+          "is_published": true
+        },
+        {
+          "id": "disposable-accessories",
+          "parent_id": "medical-accessories",
+          "slug": "disposable-accessories",
+          "name": "Disposable Accessories",
+          "description": null,
+          "sort_order": 1,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "medical-accessory-09-img",
+          "product_id": "medical-accessory-09",
+          "storage_path": "medical-accessories/medical_accessory_09_hd_transparent.png",
+          "alt_text": "Medical Accessory 09",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "medical-accessory-10",
+      "slug": "medical-accessory-10",
+      "name": "Medical Accessory 10",
+      "model_number": null,
+      "brand_id": null,
+      "short_description": "Catalog image from M2M assets — confirm exact product name and specifications with our team before ordering.",
+      "product_type": "disposable",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "medical-accessories",
+          "parent_id": null,
+          "slug": "medical-accessories",
+          "name": "Medical Accessories",
+          "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+          "sort_order": 0,
+          "is_published": true
+        },
+        {
+          "id": "disposable-accessories",
+          "parent_id": "medical-accessories",
+          "slug": "disposable-accessories",
+          "name": "Disposable Accessories",
+          "description": null,
+          "sort_order": 1,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "medical-accessory-10-img",
+          "product_id": "medical-accessory-10",
+          "storage_path": "medical-accessories/medical_accessory_10_hd_transparent.png",
+          "alt_text": "Medical Accessory 10",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "medical-accessory-11",
+      "slug": "medical-accessory-11",
+      "name": "Medical Accessory 11",
+      "model_number": null,
+      "brand_id": null,
+      "short_description": "Catalog image from M2M assets — confirm exact product name and specifications with our team before ordering.",
+      "product_type": "reusable",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "medical-accessories",
+          "parent_id": null,
+          "slug": "medical-accessories",
+          "name": "Medical Accessories",
+          "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+          "sort_order": 0,
+          "is_published": true
+        },
+        {
+          "id": "reusable-accessories",
+          "parent_id": "medical-accessories",
+          "slug": "reusable-accessories",
+          "name": "Reusable Accessories",
+          "description": null,
+          "sort_order": 2,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "medical-accessory-11-img",
+          "product_id": "medical-accessory-11",
+          "storage_path": "medical-accessories/medical_accessory_11_hd_transparent.png",
+          "alt_text": "Medical Accessory 11",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "medical-accessory-12",
+      "slug": "medical-accessory-12",
+      "name": "Medical Accessory 12",
+      "model_number": null,
+      "brand_id": null,
+      "short_description": "Catalog image from M2M assets — confirm exact product name and specifications with our team before ordering.",
+      "product_type": "reusable",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "medical-accessories",
+          "parent_id": null,
+          "slug": "medical-accessories",
+          "name": "Medical Accessories",
+          "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+          "sort_order": 0,
+          "is_published": true
+        },
+        {
+          "id": "reusable-accessories",
+          "parent_id": "medical-accessories",
+          "slug": "reusable-accessories",
+          "name": "Reusable Accessories",
+          "description": null,
+          "sort_order": 2,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "medical-accessory-12-img",
+          "product_id": "medical-accessory-12",
+          "storage_path": "medical-accessories/medical_accessory_12_hd_transparent.png",
+          "alt_text": "Medical Accessory 12",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "medical-accessory-13",
+      "slug": "medical-accessory-13",
+      "name": "Medical Accessory 13",
+      "model_number": null,
+      "brand_id": null,
+      "short_description": "Catalog image from M2M assets — confirm exact product name and specifications with our team before ordering.",
+      "product_type": "reusable",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "medical-accessories",
+          "parent_id": null,
+          "slug": "medical-accessories",
+          "name": "Medical Accessories",
+          "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+          "sort_order": 0,
+          "is_published": true
+        },
+        {
+          "id": "reusable-accessories",
+          "parent_id": "medical-accessories",
+          "slug": "reusable-accessories",
+          "name": "Reusable Accessories",
+          "description": null,
+          "sort_order": 2,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "medical-accessory-13-img",
+          "product_id": "medical-accessory-13",
+          "storage_path": "medical-accessories/medical_accessory_13_hd_transparent.png",
+          "alt_text": "Medical Accessory 13",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "medical-accessory-14",
+      "slug": "medical-accessory-14",
+      "name": "Medical Accessory 14",
+      "model_number": null,
+      "brand_id": null,
+      "short_description": "Catalog image from M2M assets — confirm exact product name and specifications with our team before ordering.",
+      "product_type": "reusable",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "medical-accessories",
+          "parent_id": null,
+          "slug": "medical-accessories",
+          "name": "Medical Accessories",
+          "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+          "sort_order": 0,
+          "is_published": true
+        },
+        {
+          "id": "reusable-accessories",
+          "parent_id": "medical-accessories",
+          "slug": "reusable-accessories",
+          "name": "Reusable Accessories",
+          "description": null,
+          "sort_order": 2,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "medical-accessory-14-img",
+          "product_id": "medical-accessory-14",
+          "storage_path": "medical-accessories/medical_accessory_14_hd_transparent.png",
+          "alt_text": "Medical Accessory 14",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "medical-accessory-15",
+      "slug": "medical-accessory-15",
+      "name": "Medical Accessory 15",
+      "model_number": null,
+      "brand_id": null,
+      "short_description": "Catalog image from M2M assets — confirm exact product name and specifications with our team before ordering.",
+      "product_type": "reusable",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "medical-accessories",
+          "parent_id": null,
+          "slug": "medical-accessories",
+          "name": "Medical Accessories",
+          "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+          "sort_order": 0,
+          "is_published": true
+        },
+        {
+          "id": "reusable-accessories",
+          "parent_id": "medical-accessories",
+          "slug": "reusable-accessories",
+          "name": "Reusable Accessories",
+          "description": null,
+          "sort_order": 2,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "medical-accessory-15-img",
+          "product_id": "medical-accessory-15",
+          "storage_path": "medical-accessories/medical_accessory_15_hd_transparent.png",
+          "alt_text": "Medical Accessory 15",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "medical-accessory-16",
+      "slug": "medical-accessory-16",
+      "name": "Medical Accessory 16",
+      "model_number": null,
+      "brand_id": null,
+      "short_description": "Catalog image from M2M assets — confirm exact product name and specifications with our team before ordering.",
+      "product_type": "reusable",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "medical-accessories",
+          "parent_id": null,
+          "slug": "medical-accessories",
+          "name": "Medical Accessories",
+          "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+          "sort_order": 0,
+          "is_published": true
+        },
+        {
+          "id": "reusable-accessories",
+          "parent_id": "medical-accessories",
+          "slug": "reusable-accessories",
+          "name": "Reusable Accessories",
+          "description": null,
+          "sort_order": 2,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "medical-accessory-16-img",
+          "product_id": "medical-accessory-16",
+          "storage_path": "medical-accessories/medical_accessory_16_hd_transparent.png",
+          "alt_text": "Medical Accessory 16",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "medical-accessory-17",
+      "slug": "medical-accessory-17",
+      "name": "Medical Accessory 17",
+      "model_number": null,
+      "brand_id": null,
+      "short_description": "Catalog image from M2M assets — confirm exact product name and specifications with our team before ordering.",
+      "product_type": "reusable",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "medical-accessories",
+          "parent_id": null,
+          "slug": "medical-accessories",
+          "name": "Medical Accessories",
+          "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+          "sort_order": 0,
+          "is_published": true
+        },
+        {
+          "id": "reusable-accessories",
+          "parent_id": "medical-accessories",
+          "slug": "reusable-accessories",
+          "name": "Reusable Accessories",
+          "description": null,
+          "sort_order": 2,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "medical-accessory-17-img",
+          "product_id": "medical-accessory-17",
+          "storage_path": "medical-accessories/medical_accessory_17_hd_transparent.png",
+          "alt_text": "Medical Accessory 17",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "medical-accessory-18",
+      "slug": "medical-accessory-18",
+      "name": "Medical Accessory 18",
+      "model_number": null,
+      "brand_id": null,
+      "short_description": "Catalog image from M2M assets — confirm exact product name and specifications with our team before ordering.",
+      "product_type": "reusable",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "medical-accessories",
+          "parent_id": null,
+          "slug": "medical-accessories",
+          "name": "Medical Accessories",
+          "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+          "sort_order": 0,
+          "is_published": true
+        },
+        {
+          "id": "reusable-accessories",
+          "parent_id": "medical-accessories",
+          "slug": "reusable-accessories",
+          "name": "Reusable Accessories",
+          "description": null,
+          "sort_order": 2,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "medical-accessory-18-img",
+          "product_id": "medical-accessory-18",
+          "storage_path": "medical-accessories/medical_accessory_18_hd_transparent.png",
+          "alt_text": "Medical Accessory 18",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    },
+    {
+      "id": "medical-accessory-19",
+      "slug": "medical-accessory-19",
+      "name": "Medical Accessory 19",
+      "model_number": null,
+      "brand_id": null,
+      "short_description": "Catalog image from M2M assets — confirm exact product name and specifications with our team before ordering.",
+      "product_type": "reusable",
+      "status": "published",
+      "is_featured": false,
+      "sort_order": 0,
+      "created_at": "2026-10-19T06:54:49.809Z",
+      "updated_at": "2026-10-19T06:54:49.809Z",
+      "brand": null,
+      "collections": [
+        {
+          "id": "medical-accessories",
+          "parent_id": null,
+          "slug": "medical-accessories",
+          "name": "Medical Accessories",
+          "description": "Disposable and reusable medical accessories for hospitals and clinics.",
+          "sort_order": 0,
+          "is_published": true
+        },
+        {
+          "id": "reusable-accessories",
+          "parent_id": "medical-accessories",
+          "slug": "reusable-accessories",
+          "name": "Reusable Accessories",
+          "description": null,
+          "sort_order": 2,
+          "is_published": true
+        }
+      ],
+      "images": [
+        {
+          "id": "medical-accessory-19-img",
+          "product_id": "medical-accessory-19",
+          "storage_path": "medical-accessories/medical_accessory_19_hd_transparent.png",
+          "alt_text": "Medical Accessory 19",
+          "sort_order": 0,
+          "is_primary": true
+        }
+      ]
+    }
+  ],
+  "partners_clients": [
+    {
+      "id": "partner-0",
+      "type": "partner",
+      "name": "SZ Caremed",
+      "logo_path": "business-partner-logos/01_szcaremed_hd_transparent.png",
+      "sort_order": 0,
+      "is_published": true
+    },
+    {
+      "id": "partner-1",
+      "type": "partner",
+      "name": "UPNMed",
+      "logo_path": "business-partner-logos/02_upnmed_hd_transparent.png",
+      "sort_order": 1,
+      "is_published": true
+    },
+    {
+      "id": "partner-2",
+      "type": "partner",
+      "name": "Edan",
+      "logo_path": "business-partner-logos/03_edan_hd_transparent.png",
+      "sort_order": 2,
+      "is_published": true
+    },
+    {
+      "id": "partner-3",
+      "type": "partner",
+      "name": "Heningtech",
+      "logo_path": "business-partner-logos/04_heningtech_hd_transparent.png",
+      "sort_order": 3,
+      "is_published": true
+    },
+    {
+      "id": "partner-4",
+      "type": "partner",
+      "name": "Comen",
+      "logo_path": "business-partner-logos/05_comen_hd_transparent.png",
+      "sort_order": 4,
+      "is_published": true
+    },
+    {
+      "id": "partner-5",
+      "type": "partner",
+      "name": "Sich Tech",
+      "logo_path": "business-partner-logos/06_sich_tech_hd_transparent.png",
+      "sort_order": 5,
+      "is_published": true
+    },
+    {
+      "id": "partner-6",
+      "type": "partner",
+      "name": "Keling",
+      "logo_path": "business-partner-logos/07_keling_hd_transparent.png",
+      "sort_order": 6,
+      "is_published": true
+    },
+    {
+      "id": "partner-7",
+      "type": "partner",
+      "name": "Lenko",
+      "logo_path": "business-partner-logos/08_lenko_hd_transparent.png",
+      "sort_order": 7,
+      "is_published": true
+    },
+    {
+      "id": "partner-8",
+      "type": "partner",
+      "name": "Amoul",
+      "logo_path": "business-partner-logos/09_amoul_hd_transparent.png",
+      "sort_order": 8,
+      "is_published": true
+    },
+    {
+      "id": "client-0",
+      "type": "client",
+      "name": "The Medical City",
+      "logo_path": "client-logos/original_quality_transparent/01_the_medical_city.png",
+      "sort_order": 0,
+      "is_published": true
+    },
+    {
+      "id": "client-1",
+      "type": "client",
+      "name": "Cardinal Santos Medical Center",
+      "logo_path": "client-logos/original_quality_transparent/02_cardinal_santos_medical_center.png",
+      "sort_order": 1,
+      "is_published": true
+    },
+    {
+      "id": "client-2",
+      "type": "client",
+      "name": "St Lukes Medical Center",
+      "logo_path": "client-logos/original_quality_transparent/03_st_lukes_medical_center.png",
+      "sort_order": 2,
+      "is_published": true
+    },
+    {
+      "id": "client-3",
+      "type": "client",
+      "name": "Philippine Heart Center",
+      "logo_path": "client-logos/original_quality_transparent/04_philippine_heart_center.png",
+      "sort_order": 3,
+      "is_published": true
+    },
+    {
+      "id": "client-4",
+      "type": "client",
+      "name": "University of Santo Tomas Hospital",
+      "logo_path": "client-logos/original_quality_transparent/05_university_of_santo_tomas_hospital.png",
+      "sort_order": 4,
+      "is_published": true
+    },
+    {
+      "id": "client-5",
+      "type": "client",
+      "name": "Makati Medical Center",
+      "logo_path": "client-logos/original_quality_transparent/06_makati_medical_center.png",
+      "sort_order": 5,
+      "is_published": true
+    },
+    {
+      "id": "client-6",
+      "type": "client",
+      "name": "Asian Hospital Medical Center",
+      "logo_path": "client-logos/original_quality_transparent/07_asian_hospital_medical_center.png",
+      "sort_order": 6,
+      "is_published": true
+    },
+    {
+      "id": "client-7",
+      "type": "client",
+      "name": "National Kidney Transplant Institute",
+      "logo_path": "client-logos/original_quality_transparent/08_national_kidney_transplant_institute.png",
+      "sort_order": 7,
+      "is_published": true
+    },
+    {
+      "id": "client-8",
+      "type": "client",
+      "name": "Manila Doctors Hospital",
+      "logo_path": "client-logos/original_quality_transparent/09_manila_doctors_hospital.png",
+      "sort_order": 8,
+      "is_published": true
+    },
+    {
+      "id": "client-9",
+      "type": "client",
+      "name": "ManilaMed",
+      "logo_path": "client-logos/original_quality_transparent/10_manilamed.png",
+      "sort_order": 9,
+      "is_published": true
+    },
+    {
+      "id": "client-10",
+      "type": "client",
+      "name": "Metropolitan Medical Center",
+      "logo_path": "client-logos/original_quality_transparent/11_metropolitan_medical_center.png",
+      "sort_order": 10,
+      "is_published": true
+    },
+    {
+      "id": "client-11",
+      "type": "client",
+      "name": "Lung Center of the Philippines",
+      "logo_path": "client-logos/original_quality_transparent/12_lung_center_of_the_philippines.png",
+      "sort_order": 11,
+      "is_published": true
+    },
+    {
+      "id": "client-12",
+      "type": "client",
+      "name": "East Avenue Medical Center",
+      "logo_path": "client-logos/original_quality_transparent/13_east_avenue_medical_center.png",
+      "sort_order": 12,
+      "is_published": true
+    },
+    {
+      "id": "client-13",
+      "type": "client",
+      "name": "Hospital Logo 14 Review Name",
+      "logo_path": "client-logos/original_quality_transparent/14_hospital_logo_14_review_name.png",
+      "sort_order": 13,
+      "is_published": false
+    },
+    {
+      "id": "client-14",
+      "type": "client",
+      "name": "UERMMMC",
+      "logo_path": "client-logos/original_quality_transparent/15_uermmmc.png",
+      "sort_order": 14,
+      "is_published": true
+    },
+    {
+      "id": "client-15",
+      "type": "client",
+      "name": "Dr Nicanor Reyes Medical Foundation",
+      "logo_path": "client-logos/original_quality_transparent/16_dr_nicanor_reyes_medical_foundation.png",
+      "sort_order": 15,
+      "is_published": true
+    },
+    {
+      "id": "client-16",
+      "type": "client",
+      "name": "Ilocos Sur Provincial Hospital Gabriela Silang",
+      "logo_path": "client-logos/original_quality_transparent/17_ilocos_sur_provincial_hospital_gabriela_silang.png",
+      "sort_order": 16,
+      "is_published": true
+    },
+    {
+      "id": "client-17",
+      "type": "client",
+      "name": "Ilocos Sur District Hospital Narvacan",
+      "logo_path": "client-logos/original_quality_transparent/18_ilocos_sur_district_hospital_narvacan.png",
+      "sort_order": 17,
+      "is_published": true
+    },
+    {
+      "id": "client-18",
+      "type": "client",
+      "name": "Ilocos Sur District Hospital Sinait",
+      "logo_path": "client-logos/original_quality_transparent/19_ilocos_sur_district_hospital_sinait.png",
+      "sort_order": 18,
+      "is_published": true
+    },
+    {
+      "id": "client-19",
+      "type": "client",
+      "name": "Marikina Valley Medical Center",
+      "logo_path": "client-logos/original_quality_transparent/20_marikina_valley_medical_center.png",
+      "sort_order": 19,
+      "is_published": true
+    }
+  ]
+}

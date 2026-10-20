@@ -1,0 +1,25 @@
+# M2M Medical — Vite SPA at https://m2mmedical.com/ (document root public_html)
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Prefer cPanel "Force HTTPS Redirect"; enable only if HTTP still serves this site:
+  # RewriteCond %{HTTPS} !=on
+  # RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Real files and folders (assets/, images, etc.)
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # React Router — /admin, /products/..., refresh without 404
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Optional hardening (if mod_headers is enabled)
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
