@@ -1,9 +1,8 @@
 ---
-# Git clone: /home/mmmedica/repositories/m2mmedical
-# Document root: /home/mmmedica/public_html/
-# Recommended branch in cPanel: cpanel-release (built static files, no Node).
-# Each task line is a separate shell — use single /bin/sh -c blocks.
+# Branch main = source only. Do NOT deploy from main on cPanel.
+# Production static files live on branch cpanel-release (built by GitHub Actions).
+# cPanel Git → set Branch to cpanel-release → Update from Remote → Deploy HEAD Commit.
 
 deployment:
   tasks:
-    - /bin/sh -c 'set -eu; DEPLOYPATH=$(tr -d "\r\n\t " < deploy/DEPLOYPATH 2>/dev/null || true); test -n "$DEPLOYPATH" || DEPLOYPATH=/home/mmmedica/public_html/; REPO=/home/mmmedica/repositories/m2mmedical; cd "$REPO"; echo "=== M2M deploy (main) -> $DEPLOYPATH ==="; if test -f index.html && test ! -f dist/index.html; then echo "Detected cpanel-release layout at repo root."; SRC=.; PUBLISH=./cpanel-publish.sh; elif test -f dist/index.html; then SRC=dist; PUBLISH=./scripts/cpanel-publish.sh; else echo "ERROR: No built site in this checkout. In cPanel Git: set branch to cpanel-release, Update from Remote, Deploy HEAD Commit. Do not rely on npm on shared hosting unless Node is confirmed."; exit 1; fi; chmod +x "$PUBLISH" 2>/dev/null || true; /bin/sh "$PUBLISH" "$DEPLOYPATH" "$SRC"; echo "Done (merge only — unrelated public_html files kept)."'
+    - /bin/sh -c 'echo "ERROR: This repository checkout is branch main (source). cPanel must track branch cpanel-release for production deploy."; echo "Fix: Git Version Control → Branch = cpanel-release → Update from Remote → Deploy HEAD Commit."; echo "Build branch: cpanel-release (from GitHub Actions). Target: /home/mmmedica/public_html/"; exit 1'

@@ -48,10 +48,17 @@ if (missing.length) {
   process.exit(1)
 }
 
+for (const name of [...js, ...css]) {
+  if (!fs.existsSync(path.join(assets, name))) {
+    console.error(`Bundle listed but missing: assets/${name}`)
+    process.exit(1)
+  }
+}
+
 const manifest = {
   builtAt: new Date().toISOString(),
-  jsBundles: js,
-  cssBundles: css,
+  jsBundles: js.sort(),
+  cssBundles: css.sort(),
   indexAssetRefs: refs,
 }
 

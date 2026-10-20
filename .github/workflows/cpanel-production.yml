@@ -48,11 +48,26 @@ jobs:
       - name: Verify dist output
         run: node scripts/verify-dist.mjs
 
+      - name: Stamp deploy manifest
+        run: |
+          node <<'NODE'
+          const fs = require('fs')
+          const path = 'dist/DEPLOY_MANIFEST.json'
+          const m = JSON.parse(fs.readFileSync(path, 'utf8'))
+          m.cpanelGitBranch = 'cpanel-release'
+          m.sourceMainCommit = process.env.GITHUB_SHA
+          m.deployTarget = '/home/mmmedica/public_html/'
+          m.cpanelClonePath = '/home/mmmedica/repositories/m2mmedical'
+          fs.writeFileSync(path, JSON.stringify(m, null, 2))
+          console.log('Deploy manifest:', m)
+          NODE
+
       - name: Prepare cpanel-release bundle
         run: |
           DEPLOYPATH=$(tr -d '\r\n\t ' < deploy/DEPLOYPATH)
           sed "s|__DEPLOYPATH__|${DEPLOYPATH}|g" deploy/cpanel-static-deploy.yml > dist/.cpanel.yml
           cp scripts/cpanel-publish.sh dist/cpanel-publish.sh
+          cp deploy/CPANEL_BRANCH dist/CPANEL_BRANCH
           chmod +x dist/cpanel-publish.sh
 
       - name: Publish cpanel-release branch

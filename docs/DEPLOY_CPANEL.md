@@ -68,9 +68,16 @@ Deploy writes **directly to that folder root** (`index.html` at `/home/mmmedica/
 
 ---
 
-## Step 2 — Choose deployment mode
+## Step 2 — One workflow (no branch ambiguity)
 
-### Recommended: branch `cpanel-release` (no Node on cPanel)
+| Branch | Role | cPanel deploy? |
+|--------|------|----------------|
+| **`main`** | Source code; triggers GitHub Actions build | **No** — `.cpanel.yml` on `main` fails on purpose |
+| **`cpanel-release`** | Compiled `index.html`, `assets/`, `.htaccess`, manifest | **Yes** — only branch to track in cPanel Git |
+
+GitHub Actions on push to `main` updates **`cpanel-release`**. cPanel must **check out `cpanel-release`**, not `main`.
+
+### Branch `cpanel-release` (required on cPanel; no Node on server)
 
 1. GitHub → repo **Settings → Secrets and variables → Actions**:
    - `VITE_SUPABASE_URL`
@@ -140,7 +147,8 @@ npm run build:verify
 
 1. **Git Version Control** → repository `m2mmedical`.
 2. **Repository Path** must be `/home/mmmedica/repositories/m2mmedical`.
-3. **Branch:** set to **`cpanel-release`** (not `main` unless Node build on server is confirmed).
+3. **Branch:** change from `main` to **`cpanel-release`** (Manage → edit repository → Branch field, or use branch selector if shown).
+4. After saving, confirm the UI shows **Checked-Out Branch: cpanel-release** (not `main` — Cursor cannot verify this for you).
 4. Click **Update from Remote** — wait until it finishes without error.
 5. Confirm in **File Manager** → `repositories/m2mmedical/index.html` exists and **`assets/`** contains files named like `index-*.js` (not only 2017-era names).
 6. Click **Deploy HEAD Commit** — read the deploy log; it must include:
