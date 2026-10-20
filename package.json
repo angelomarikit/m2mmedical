@@ -19,6 +19,7 @@
     "catalog:publish": "npm run catalog:sync && npm run catalog:upload && npm run db:seed",
     "db:seed": "tsx scripts/db-seed.ts",
     "bootstrap-admin": "tsx scripts/bootstrap-admin.ts",
+    "storage:ensure": "tsx scripts/ensure-storage-buckets.ts",
     "prerender:routes": "tsx scripts/fetch-prerender-routes.ts"
   },
   "dependencies": {

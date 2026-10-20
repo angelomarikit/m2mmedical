@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/Button'
 import { AdminCard } from '../components/AdminCard'
 import { FormField } from '../components/FormField'
 import { SaveBanner } from '../components/SaveBanner'
+import { AdminDeleteButton } from '../components/AdminDeleteButton'
 
 type HeroForm = {
   heading: string
@@ -74,6 +75,19 @@ export function AdminPageSectionsPage() {
     })
     setHeroVisible(heroSection.is_visible)
   }, [heroSection, heroForm])
+
+  const deleteSection = useMutation({
+    mutationFn: async (sectionId: string) => {
+      const { error } = await supabase.from('page_sections').delete().eq('id', sectionId)
+      if (error) throw error
+    },
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['admin-sections'] })
+      qc.invalidateQueries({ queryKey: ['page-sections'] })
+      setNotice('Section deleted.')
+    },
+    onError: () => setNotice('Could not delete section.'),
+  })
 
   const saveHero = useMutation({
     mutationFn: async (payload: { content_json: HeroForm; is_visible: boolean }) => {
@@ -199,13 +213,22 @@ export function AdminPageSectionsPage() {
       </AdminCard>
 
       {sections.filter((s) => s.section_key !== 'hero').length > 0 && (
-        <AdminCard title="Other sections" description="Additional homepage sections will appear here as forms when configured.">
-          <ul className="space-y-2 text-sm text-text-muted">
+        <AdminCard title="Other sections" description="Additional homepage blocks. Editor forms can be added later; you can remove sections here.">
+          <ul className="space-y-3 text-sm">
             {sections
               .filter((s) => s.section_key !== 'hero')
               .map((s) => (
-                <li key={s.id}>
-                  {s.section_key} — editor coming soon; contact your developer to add a form for this block.
+                <li key={s.id} className="flex flex-wrap items-center justify-between gap-2 rounded-md border border-border px-3 py-2">
+                  <span>
+                    {s.section_key}{' '}
+                    <span className="text-text-muted">({s.section_type})</span>
+                  </span>
+                  <AdminDeleteButton
+                    confirmMessage={`Delete homepage section “${s.section_key}”?`}
+                    onDelete={async () => {
+                      await deleteSection.mutateAsync(s.id)
+                    }}
+                  />
                 </li>
               ))}
           </ul>

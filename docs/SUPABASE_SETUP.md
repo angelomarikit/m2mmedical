@@ -44,11 +44,20 @@ npx supabase db push
 
 Or paste the SQL from `supabase/migrations/20260320000000_initial_schema.sql` into the SQL Editor and run.
 
-## Step 5 — Storage buckets
+## Step 5 — Storage buckets (SQL Editor — no CLI required)
 
-The migration creates buckets: `product-images`, `website-assets`, `brand-logos`, `partner-client-logos`, `product-documents`.
+Admin product photos and logo uploads use **Supabase Storage** from the browser. You only need buckets + policies in the database.
 
-Verify in **Storage** that they exist and policies are applied.
+1. Open **Supabase Dashboard → SQL Editor → New query**.
+2. Paste the full contents of **`docs/SUPABASE_STORAGE.sql`** and click **Run**.
+3. Confirm under **Storage** that these buckets exist (public):  
+   `product-images`, `website-assets`, `brand-logos`, `partner-client-logos`, `product-documents`.
+
+If `insert into storage.buckets` fails in SQL Editor, create the same five buckets manually in **Storage → New bucket** (public), then run only the **policy** section of `SUPABASE_STORAGE.sql`.
+
+You must be signed in to the admin as **approved** staff (`profiles.approval_status = 'approved'`, role owner/admin/editor) for uploads to succeed.
+
+Optional CLI alternative: `npm run storage:ensure` (uses service role locally; not required if you use SQL).
 
 ## Step 6 — Deploy Edge Functions
 
@@ -56,6 +65,21 @@ Verify in **Storage** that they exist and policies are applied.
 npx supabase functions deploy submit-product-inquiry
 npx supabase functions deploy submit-contact
 npx supabase functions deploy submit-service-inquiry
+npx supabase functions deploy admin-users
+npx supabase functions deploy register-staff
+```
+
+Optional: `staff-upload` Edge Function (only if you use CLI deploy for uploads; **not required** when using SQL storage policies + browser upload).
+```
+
+In **Authentication → Providers → Email**, turn **Confirm email** off if you want instant sign-in after admin approval (registration uses server-side confirm).
+
+Staff self-register at `/admin/register`; owners/admins approve under **Users & access**.
+
+Apply migrations after pulling updates (e.g. staff delete on inquiries):
+
+```bash
+npx supabase db push
 ```
 
 Functions use `SUPABASE_SERVICE_ROLE_KEY` automatically in the hosted environment.
@@ -83,7 +107,7 @@ Re-run seed after import so `product_images.storage_path` matches uploaded objec
 No public registration. Locally:
 
 ```bash
-set BOOTSTRAP_ADMIN_EMAIL=you@company.com
+set BOOTSTRAP_ADMIN_EMAIL=admin@m2mmedical.com
 set BOOTSTRAP_ADMIN_PASSWORD=your-secure-password
 npm run bootstrap-admin
 ```

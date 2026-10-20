@@ -1,23 +1,29 @@
 import { useState } from 'react'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Lock, Mail } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { Input } from '@/components/ui/Input'
 import { Button } from '@/components/ui/Button'
 import { COMPANY } from '@/lib/constants'
-import { useAdminSession } from '../useAdminSession'
+import { useAdminAccess } from '../useAdminAccess'
 
 export function AdminLoginPage() {
-  const { session, loading } = useAdminSession()
+  const { session, loading, canAccessCms, isPending } = useAdminAccess()
   const navigate = useNavigate()
+  const location = useLocation()
+  const registrationSuccess =
+    location.state && typeof location.state === 'object' && 'registrationSuccess' in location.state
+      ? String((location.state as { registrationSuccess: string }).registrationSuccess)
+      : null
   const reduceMotion = useReducedMotion()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [submitting, setSubmitting] = useState(false)
 
-  if (!loading && session) return <Navigate to="/admin/dashboard" replace />
+  if (!loading && session && canAccessCms) return <Navigate to="/admin/dashboard" replace />
+  if (!loading && session && isPending) return <Navigate to="/admin/pending" replace />
 
   return (
     <div className="relative flex min-h-screen flex-col lg:flex-row">
@@ -77,16 +83,26 @@ export function AdminLoginPage() {
             setSubmitting(true)
             const { error: authError } = await supabase.auth.signInWithPassword({ email, password })
             setSubmitting(false)
-            if (authError) setError(authError.message)
-            else navigate('/admin/dashboard')
+            if (authError) {
+              setError(authError.message)
+              return
+            }
+            const { data: profile } = await supabase
+              .from('profiles')
+              .select('approval_status, role')
+              .eq('id', (await supabase.auth.getUser()).data.user?.id ?? '')
+              .maybeSingle()
+            if (profile?.approval_status === 'pending') navigate('/admin/pending')
+            else if (profile?.approval_status === 'rejected') {
+              await supabase.auth.signOut()
+              setError('Your registration was not approved.')
+            } else navigate('/admin/dashboard')
           }}
         >
           <div className="mb-8">
             <p className="text-xs font-semibold uppercase tracking-widest text-brand">Admin portal</p>
             <h1 className="mt-2 text-2xl font-bold tracking-tight text-text">Sign in</h1>
-            <p className="mt-2 text-sm text-text-muted">
-              Use your staff credentials. Public registration is disabled.
-            </p>
+            <p className="mt-2 text-sm text-text-muted">Sign in after an administrator approves your account.</p>
           </div>
 
           <div className="space-y-5">
@@ -126,6 +142,11 @@ export function AdminLoginPage() {
                 />
               </div>
             </div>
+            {registrationSuccess && (
+              <p className="rounded-md border border-green-200 bg-green-50 px-3 py-2 text-sm text-green-800" role="status">
+                {registrationSuccess}
+              </p>
+            )}
             {error && (
               <p className="rounded-md border border-brand/25 bg-brand/5 px-3 py-2 text-sm text-brand" role="alert">
                 {error}
@@ -136,8 +157,11 @@ export function AdminLoginPage() {
             </Button>
           </div>
 
-          <p className="mt-8 text-center text-xs text-text-muted">
-            Need access? Contact your M2M administrator.
+          <p className="mt-8 text-center text-sm text-text-muted">
+            New staff?{' '}
+            <Link to="/admin/register" className="font-medium text-brand hover:underline">
+              Register for access
+            </Link>
           </p>
         </motion.form>
       </div>

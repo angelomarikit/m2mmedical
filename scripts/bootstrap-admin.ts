@@ -25,13 +25,22 @@ async function main() {
   }
   const userId = created?.user?.id
   if (userId) {
-    await supabase.from('profiles').upsert({ id: userId, full_name: 'M2M Owner', role: 'owner' })
+    await supabase.from('profiles').upsert({
+      id: userId,
+      full_name: 'M2M Owner',
+      email,
+      role: 'owner',
+      approval_status: 'approved',
+    })
     console.log('Created owner admin:', email)
   } else {
     const { data: list } = await supabase.auth.admin.listUsers()
     const user = list.users.find((u) => u.email === email)
     if (user) {
-      await supabase.from('profiles').update({ role: 'owner' }).eq('id', user.id)
+      await supabase
+        .from('profiles')
+        .update({ role: 'owner', approval_status: 'approved', email })
+        .eq('id', user.id)
       console.log('Promoted existing user to owner:', email)
     }
   }

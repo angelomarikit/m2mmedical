@@ -328,9 +328,10 @@ create policy "Public read published products" on public.products for select usi
 create policy "Public read product_collections for published" on public.product_collections for select using (
   exists (select 1 from public.products p where p.id = product_id and p.status = 'published')
 );
-create policy "Public read images for published products" on public.product_images for select using (
+create policy "Anon read published product images" on public.product_images for select to anon using (
   exists (select 1 from public.products p where p.id = product_id and p.status = 'published')
 );
+create policy "Authenticated all product_images" on public.product_images for all to authenticated using (true) with check (true);
 create policy "Public read verified specs for published" on public.product_specifications for select using (
   verification_status = 'verified'
   and exists (select 1 from public.products p where p.id = product_id and p.status = 'published')
@@ -355,7 +356,6 @@ create policy "Staff manage brands" on public.brands for all using (public.is_st
 create policy "Staff manage collections" on public.collections for all using (public.is_staff()) with check (public.is_admin() or public.current_user_role() in ('admin', 'editor'));
 create policy "Staff manage products" on public.products for all using (public.is_staff()) with check (public.is_admin() or public.current_user_role() in ('admin', 'editor'));
 create policy "Staff manage product_collections" on public.product_collections for all using (public.is_staff()) with check (public.is_admin() or public.current_user_role() in ('admin', 'editor'));
-create policy "Staff manage product_images" on public.product_images for all using (public.is_staff()) with check (public.is_admin() or public.current_user_role() in ('admin', 'editor'));
 create policy "Staff manage product_specifications" on public.product_specifications for all using (public.is_staff()) with check (public.is_admin() or public.current_user_role() in ('admin', 'editor'));
 create policy "Staff manage product_documents" on public.product_documents for all using (public.is_staff()) with check (public.is_admin() or public.current_user_role() in ('admin', 'editor'));
 create policy "Staff read media" on public.media_assets for select using (public.is_staff());

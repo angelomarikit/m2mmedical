@@ -7,8 +7,10 @@ import { Input } from '@/components/ui/Input'
 import { Textarea } from '@/components/ui/Textarea'
 import { Button } from '@/components/ui/Button'
 import { AdminCard } from '../components/AdminCard'
+import { AdminPageHeader } from '../components/AdminPageHeader'
 import { FormField } from '../components/FormField'
 import { SaveBanner } from '../components/SaveBanner'
+import { AdminChangePasswordCard } from '../components/AdminChangePasswordCard'
 import { useLogoUrl } from '@/hooks/useSiteSettings'
 
 type CompanyForm = {
@@ -126,19 +128,16 @@ export function AdminSettingsPage() {
     try {
       const ext = file.name.split('.').pop()?.toLowerCase() ?? 'png'
       const path = `logo.${ext}`
-      const { error: upErr } = await supabase.storage.from('website-assets').upload(path, file, {
-        upsert: true,
-        contentType: file.type,
-      })
-      if (upErr) throw upErr
+      const { uploadWebsiteAssetFile } = await import('../lib/uploads')
+      await uploadWebsiteAssetFile(file, path)
       await supabase.from('site_settings').upsert({
         key: 'branding',
         value_json: { logo_storage_path: path },
       })
       qc.invalidateQueries({ queryKey: ['site-settings'] })
       setNotice('Logo uploaded. It will appear in the header and footer on the public site.')
-    } catch {
-      setNotice('Logo upload failed. Check storage permissions and try again.')
+    } catch (e) {
+      setNotice(e instanceof Error ? e.message : 'Logo upload failed. Run docs/SUPABASE_STORAGE.sql in Supabase SQL Editor.')
     } finally {
       setLogoUploading(false)
     }
@@ -150,12 +149,10 @@ export function AdminSettingsPage() {
 
   return (
     <div className="space-y-8">
-      <div>
-        <h1 className="text-2xl font-bold text-text">Site settings</h1>
-        <p className="mt-2 text-sm text-text-muted">
-          Update company details, contact information, and SEO defaults. Changes apply across the public website.
-        </p>
-      </div>
+      <AdminPageHeader
+        title="Site settings"
+        description="Update company details, contact information, and SEO defaults. Changes apply across the public website."
+      />
 
       <SaveBanner message={notice} tone={notice?.includes('failed') || notice?.includes('Could not') ? 'error' : 'success'} />
 
@@ -244,6 +241,8 @@ export function AdminSettingsPage() {
           </div>
         </form>
       </AdminCard>
+
+      <AdminChangePasswordCard />
     </div>
   )
 }

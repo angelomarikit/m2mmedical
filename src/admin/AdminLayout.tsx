@@ -5,13 +5,14 @@ import {
   FolderTree,
   Tags,
   MessageSquare,
-  Image,
   Users,
   Settings,
   Wrench,
   Mail,
   LogOut,
   ExternalLink,
+  KeyRound,
+  UserCog,
 } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { cn } from '@/lib/cn'
@@ -25,18 +26,18 @@ const links = [
   { to: '/admin/inquiries', label: 'Inquiries', icon: MessageSquare },
   { to: '/admin/contact-messages', label: 'Contact', icon: Mail },
   { to: '/admin/service-inquiries', label: 'Service', icon: Wrench },
-  { to: '/admin/media', label: 'Media', icon: Image },
   { to: '/admin/partners-clients', label: 'Partners & Clients', icon: Users },
   { to: '/admin/page-sections', label: 'Homepage', icon: LayoutDashboard },
   { to: '/admin/settings', label: 'Settings', icon: Settings },
-  { to: '/admin/users', label: 'Users', icon: Users },
+  { to: '/admin/users', label: 'Users & access', icon: UserCog },
+  { to: '/admin/account', label: 'My account', icon: KeyRound },
 ]
 
 export function AdminLayout() {
   const navigate = useNavigate()
 
   return (
-    <div className="flex min-h-screen bg-[#f0f1f3]">
+    <div className="flex min-h-screen bg-gradient-to-br from-[#eef0f3] via-[#f4f5f7] to-[#e8eaef]">
       <aside className="hidden w-[17.5rem] shrink-0 flex-col border-r border-white/10 bg-surface-dark text-white lg:flex">
         <div className="border-b border-white/10 px-5 py-6">
           <Link to="/" className="group flex items-center gap-2 text-xs text-white/60 transition-colors hover:text-white">
@@ -105,7 +106,7 @@ export function AdminLayout() {
           </button>
         </header>
         <main className="flex-1 p-4 lg:p-8">
-          <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-7xl">
             <Outlet />
           </div>
         </main>

@@ -1,14 +1,17 @@
 import { useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import { supabase } from '@/lib/supabase'
 import { Input } from '@/components/ui/Input'
 import { Textarea } from '@/components/ui/Textarea'
 import { Button } from '@/components/ui/Button'
+import { AdminDeleteButton } from '../components/AdminDeleteButton'
+import { ProductImagesEditor } from '../components/ProductImagesEditor'
 
 export function AdminProductEditPage() {
   const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
   const qc = useQueryClient()
   const { data: product, isLoading } = useQuery({
     queryKey: ['admin-product', id],
@@ -40,12 +43,34 @@ export function AdminProductEditPage() {
     onSuccess: () => qc.invalidateQueries({ queryKey: ['admin-product', id] }),
   })
 
+  const remove = useMutation({
+    mutationFn: async () => {
+      const { error } = await supabase.from('products').delete().eq('id', id!)
+      if (error) throw error
+    },
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['admin-products'] })
+      navigate('/admin/products')
+    },
+  })
+
   if (isLoading || !product) return <p>Loading product…</p>
 
   return (
     <div className="max-w-3xl">
-      <Link to="/admin/products" className="text-sm text-brand hover:underline">← Products</Link>
-      <h1 className="mt-2 text-2xl font-bold">Edit product</h1>
+      <Link to="/admin/products" className="text-sm text-brand hover:underline">
+        ← Products
+      </Link>
+      <div className="mt-2 flex flex-wrap items-start justify-between gap-4">
+        <h1 className="text-2xl font-bold">Edit product</h1>
+        <AdminDeleteButton
+          label="Delete product"
+          confirmMessage={`Delete “${product.name}” permanently?`}
+          onDelete={async () => {
+            await remove.mutateAsync()
+          }}
+        />
+      </div>
       <form
         className="mt-6 space-y-4 rounded-lg border border-border bg-white p-6"
         onSubmit={handleSubmit((values) => save.mutate(values))}
@@ -73,7 +98,11 @@ export function AdminProductEditPage() {
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label className="text-sm font-medium">Status</label>
-            <select defaultValue={product.status} className="h-11 w-full rounded-md border border-border px-3 text-sm" {...register('status')}>
+            <select
+              defaultValue={product.status}
+              className="h-11 w-full rounded-md border border-border px-3 text-sm"
+              {...register('status')}
+            >
               <option value="draft">Draft</option>
               <option value="published">Published</option>
               <option value="archived">Archived</option>
@@ -81,7 +110,11 @@ export function AdminProductEditPage() {
           </div>
           <div>
             <label className="text-sm font-medium">Product type</label>
-            <select defaultValue={product.product_type ?? ''} className="h-11 w-full rounded-md border border-border px-3 text-sm" {...register('product_type')}>
+            <select
+              defaultValue={product.product_type ?? ''}
+              className="h-11 w-full rounded-md border border-border px-3 text-sm"
+              {...register('product_type')}
+            >
               <option value="">—</option>
               <option value="disposable">Disposable</option>
               <option value="reusable">Reusable</option>
@@ -93,9 +126,17 @@ export function AdminProductEditPage() {
           <input type="checkbox" defaultChecked={product.is_featured} {...register('is_featured')} />
           Featured on homepage
         </label>
-        <Button type="submit" disabled={save.isPending}>Save changes</Button>
+        <Button type="submit" disabled={save.isPending}>
+          Save changes
+        </Button>
         {save.isSuccess && <p className="text-sm text-green-700">Saved.</p>}
       </form>
+
+      {id && product && (
+        <div className="mt-8">
+          <ProductImagesEditor productId={id} productName={product.name} />
+        </div>
+      )}
     </div>
   )
 }
